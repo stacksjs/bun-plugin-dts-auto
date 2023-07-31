@@ -69,7 +69,7 @@ The MIT License (MIT). Please see [LICENSE](https://github.com/stacksjs/bun-plug
 
 Made with ❤️
 
--<!-- Badges -->
+<!-- Badges -->
 [npm-version-src]: <https://img.shields.io/npm/v/bun-plugin-dts-auto?style=flat-square>
 [npm-version-href]: <https://npmjs.com/package/bun-plugin-dts-auto>
 [npm-downloads-src]: <https://img.shields.io/npm/dm/bun-plugin-dts-auto?style=flat-square>
