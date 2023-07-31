@@ -74,7 +74,7 @@ Made with ❤️
 [npm-version-href]: <https://npmjs.com/package/bun-plugin-dts-auto>
 [npm-downloads-src]: <https://img.shields.io/npm/dm/bun-plugin-dts-auto?style=flat-square>
 [npm-downloads-href]: <https://npmjs.com/package/bun-plugin-dts-auto>
-[github-actions-src]: <https://img.shields.io/github/workflow/status/stacksjs/bun-plugin-dts-auto/CI/main?style=flat-square>
+[github-actions-src]: <https://img.shields.io/github/actions/workflow/status/stacksjs/bun-plugin-dts-auto/ci.yml?style=flat-square&branch=main>
 [github-actions-href]: <https://github.com/stacksjs/bun-plugin-dts-auto/actions?query=workflow%3Aci>
 
 <!-- [codecov-src]: https://img.shields.io/codecov/c/gh/stacksjs/bun-plugin-dts-auto/main?style=flat-square
