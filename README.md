@@ -1,12 +1,19 @@
-# Bun Plugin - Automatic dts generation
+# Automatic dts generation
+
+[![npm version][npm-version-src]][npm-version-href]
+[![GitHub Actions][github-actions-src]][github-actions-href]
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+<!-- [![npm downloads][npm-downloads-src]][npm-downloads-href] -->
+<!-- [![Codecov][codecov-src]][codecov-href] -->
 
 This Bun plugin generates dts files for your TypeScript project.
 
-## ☘️ Features
+## Features
 
 - 🚗 Automatic dts generation based on your entrypoints
+- 🗺️ Support for source map generations
 
-## 🤖 Usage
+## Usage
 
 ```bash
 bun install -d bun-plugin-dts-auto
@@ -23,7 +30,9 @@ await Bun.build({
   ],
   outdir: './dist',
   plugins: [
-    dts(),
+    dts({
+      withSourceMap: true,
+    }),
   ],
 })
 
@@ -59,3 +68,14 @@ For casual chit-chat with others using this package:
 The MIT License (MIT). Please see [LICENSE](https://github.com/stacksjs/bun-plugin-dts-auto/tree/main/LICENSE.md) for more information.
 
 Made with ❤️
+
+-<!-- Badges -->
+[npm-version-src]: <https://img.shields.io/npm/v/bun-plugin-dts-auto?style=flat-square>
+[npm-version-href]: <https://npmjs.com/package/bun-plugin-dts-auto>
+[npm-downloads-src]: <https://img.shields.io/npm/dm/bun-plugin-dts-auto?style=flat-square>
+[npm-downloads-href]: <https://npmjs.com/package/bun-plugin-dts-auto>
+[github-actions-src]: <https://img.shields.io/github/workflow/status/stacksjs/bun-plugin-dts-auto/CI/main?style=flat-square>
+[github-actions-href]: <https://github.com/stacksjs/bun-plugin-dts-auto/actions?query=workflow%3Aci>
+
+<!-- [codecov-src]: https://img.shields.io/codecov/c/gh/stacksjs/bun-plugin-dts-auto/main?style=flat-square
+[codecov-href]: https://codecov.io/gh/stacksjs/bun-plugin-dts-auto -->

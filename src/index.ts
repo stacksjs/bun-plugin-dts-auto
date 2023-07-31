@@ -2,20 +2,41 @@ import p from 'node:path'
 import { BunPlugin } from 'bun'
 import ts from 'typescript'
 
-export type Options = {
-  compiler?: ts.CompilerOptions
-  tsconfigPath?: string
+type TsOptions = {
+  declaration: boolean
+  emitDeclarationOnly: boolean
+  noEmit: boolean
+  declarationMap?: boolean
 }
 
-export async function generate(entryPoints: string | string[], options?: Options) {
+type DtsOptions = {
+  compiler?: ts.CompilerOptions
+  tsconfigPath?: string
+  withSourceMap?: boolean
+}
+
+export async function generate(entryPoints: string | string[], options?: DtsOptions) {
   const path = p.resolve(options?.tsconfigPath ?? 'tsconfig.json')
   const configJson = ts.readConfigFile(path, ts.sys.readFile).config
+
+  let opts: TsOptions = {
+    declaration: true,
+    emitDeclarationOnly: true,
+    noEmit: false,
+  }
+
+  if (options?.withSourceMap) {
+    opts = {
+      ...opts,
+      declarationMap: true,
+    }
+  }
 
   const parsedConfig = ts.parseJsonConfigFileContent(
     configJson,
     ts.sys,
     process.cwd(),
-    { declaration: true, emitDeclarationOnly: true, noEmit: false },
+    opts,
     path,
   )
 
@@ -30,13 +51,13 @@ export async function generate(entryPoints: string | string[], options?: Options
   program.emit()
 }
 
-export function dts(): BunPlugin {
+export function dts(options: DtsOptions): BunPlugin {
   return {
     name: 'bun-plugin-dts-auto',
     async setup(build) {
       const entrypoints = [...build.config.entrypoints].sort()
       const tsconfigPath = build.config
-      await generate(entrypoints)
+      await generate(entrypoints, options)
     },
   }
 }
