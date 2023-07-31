@@ -31,7 +31,7 @@ jobs:
         uses: oven-sh/setup-bun@v1
 
       - name: Lint
-        run: bun run lint
+        run: bun --bun run lint
 
   typecheck:
     runs-on: ubuntu-latest
