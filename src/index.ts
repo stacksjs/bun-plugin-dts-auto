@@ -51,7 +51,7 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
   program.emit()
 }
 
-export function dts(options: DtsOptions): BunPlugin {
+export function dts(options?: DtsOptions): BunPlugin {
   return {
     name: 'bun-plugin-dts-auto',
     async setup(build) {
