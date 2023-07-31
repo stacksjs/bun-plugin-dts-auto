@@ -10,8 +10,8 @@ This Bun plugin generates dts files for your TypeScript project.
 
 ## Features
 
-- 🚗 Automatic dts generation based on your entrypoints
-- 🗺️ Support for source map generations
+- 🚗  Automatic dts generation based on your entrypoints
+- 🗺️  Support for source map generations
 
 ## Usage
 
@@ -31,7 +31,7 @@ await Bun.build({
   outdir: './dist',
   plugins: [
     dts({
-      withSourceMap: true,
+      withSourceMap: true, // optional
     }),
   ],
 })
