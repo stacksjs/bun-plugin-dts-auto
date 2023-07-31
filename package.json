@@ -1,21 +1,22 @@
 {
-  "name": "@stacksjs/dummy-bun-ts-pkg",
-  "version": "0.0.5",
-  "description": "",
+  "name": "bun-plugin-dts-auto",
+  "version": "0.0.0",
+  "description": "Automatically generate d.ts files for Bun packages.",
   "author": "Chris Breuer <chris@ow3.org>",
   "license": "MIT",
-  "homepage": "https://github.com/stacksjs/bun-ts-starter#readme",
+  "homepage": "https://github.com/stacksjs/bun-plugin-dts-auto#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stacksjs/bun-ts-starter.git"
+    "url": "git+https://github.com/stacksjs/bun-plugin-dts-auto.git"
   },
   "bugs": {
-    "url": "https://github.com/stacksjs/bun-ts-starter/issues"
+    "url": "https://github.com/stacksjs/bun-plugin-dts-auto/issues"
   },
   "keywords": [
+    "dts",
+    "generation",
     "typescript",
-    "starter",
-    "kit",
+    "types",
     "bun",
     "package"
   ],
