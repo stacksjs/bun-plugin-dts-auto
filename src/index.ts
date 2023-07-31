@@ -7,6 +7,7 @@ interface TsOptions {
   emitDeclarationOnly: boolean
   noEmit: boolean
   declarationMap?: boolean
+  [index: string]: any
 }
 
 interface DtsOptions {
