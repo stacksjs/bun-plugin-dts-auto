@@ -8,11 +8,12 @@ await Bun.build({
   external: [
     'typescript',
     'bun',
-    'node:path'
+    'node:path',
   ],
   plugins: [
     dts(),
   ],
 })
 
+// eslint-disable-next-line no-console
 console.log('Build complete ✅')

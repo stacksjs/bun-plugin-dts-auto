@@ -1,15 +1,15 @@
 import p from 'node:path'
-import { BunPlugin } from 'bun'
+import type { BunPlugin } from 'bun'
 import ts from 'typescript'
 
-type TsOptions = {
+interface TsOptions {
   declaration: boolean
   emitDeclarationOnly: boolean
   noEmit: boolean
   declarationMap?: boolean
 }
 
-type DtsOptions = {
+interface DtsOptions {
   compiler?: ts.CompilerOptions
   tsconfigPath?: string
   withSourceMap?: boolean
@@ -56,7 +56,6 @@ export function dts(options?: DtsOptions): BunPlugin {
     name: 'bun-plugin-dts-auto',
     async setup(build) {
       const entrypoints = [...build.config.entrypoints].sort()
-      const tsconfigPath = build.config
       await generate(entrypoints, options)
     },
   }
