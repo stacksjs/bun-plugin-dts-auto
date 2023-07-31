@@ -1,0 +1,73 @@
+{
+  "name": "@stacksjs/dummy-bun-ts-pkg",
+  "version": "0.0.5",
+  "description": "",
+  "author": "Chris Breuer <chris@ow3.org>",
+  "license": "MIT",
+  "homepage": "https://github.com/stacksjs/bun-ts-starter#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stacksjs/bun-ts-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stacksjs/bun-ts-starter/issues"
+  },
+  "keywords": [
+    "typescript",
+    "starter",
+    "kit",
+    "bun",
+    "package"
+  ],
+  "exports": {
+    ".": {
+      "bun": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bun --bun build.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "fresh": "rimraf node_modules/ bun.lock && bun i",
+    "commit": "git cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "prepublishOnly": "bun --bun run build",
+    "release": "bunx --bun bumpp package.json --all",
+    "start": "bun --bun src/index.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@ow3/eslint-config": "^0.47.1",
+    "@types/node": "^18.17.1",
+    "bun-types": "^0.7.1",
+    "bumpp": "^9.1.1",
+    "commitizen": "^4.3.0",
+    "conventional-changelog-cli": "^3.0.0",
+    "cz-git": "^1.7.0",
+    "eslint": "^8.46.0",
+    "lint-staged": "^13.2.3",
+    "rimraf": "^3.0.2",
+    "simple-git-hooks": "^2.9.0",
+    "typescript": "^5.1.6"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx --no-install lint-staged",
+    "commit-msg": "npx --no -- commitlint --edit $1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": "eslint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  }
+}
