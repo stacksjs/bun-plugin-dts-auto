@@ -22,6 +22,8 @@ concurrency:
 
 jobs:
   lint:
+    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
 
@@ -32,11 +34,11 @@ jobs:
         run: bun run lint
 
   typecheck:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Install bun
         uses: oven-sh/setup-bun@v1
 
@@ -47,6 +49,8 @@ jobs:
         run: bun --bun run typecheck
 
   test:
+    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
 
@@ -60,6 +64,8 @@ jobs:
         run: bun test
 
   js-cs-fixer:
+    runs-on: ubuntu-latest
+
     if: github.event_name == 'pull_request' && ! startsWith(github.ref, 'refs/heads/auto-fixed/')
 
     steps:
