@@ -47,17 +47,17 @@
   },
   "devDependencies": {
     "@ow3/eslint-config": "^0.47.3",
-    "@types/node": "^18.17.4",
-    "bumpp": "^9.1.1",
-    "bun-types": "^0.7.3",
+    "@types/node": "^18.19.17",
+    "bumpp": "^9.3.0",
+    "bun-types": "^0.8.1",
     "commitizen": "^4.3.0",
     "conventional-changelog-cli": "^3.0.0",
-    "cz-git": "^1.7.1",
-    "eslint": "^8.46.0",
-    "lint-staged": "^13.2.3",
-    "rimraf": "^5.0.1",
+    "cz-git": "^1.8.0",
+    "eslint": "^8.56.0",
+    "lint-staged": "^13.3.0",
+    "rimraf": "^5.0.5",
     "simple-git-hooks": "^2.9.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.3.3"
   },
   "simple-git-hooks": {
     "pre-commit": "npx --no-install lint-staged",
