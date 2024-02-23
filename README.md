@@ -1,17 +1,20 @@
-# Automatic dts generation
+![Social Card of Bun Plugin DTS Auto](./.github/art/cover.jpg)
+
+# bun-plugin-dts-auto
 
 [![npm version][npm-version-src]][npm-version-href]
 [![GitHub Actions][github-actions-src]][github-actions-href]
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-<!-- [![npm downloads][npm-downloads-src]][npm-downloads-href] -->
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
 <!-- [![Codecov][codecov-src]][codecov-href] -->
 
 This Bun plugin generates dts files for your TypeScript project.
 
 ## Features
 
-- 🚗  Automatic dts generation based on your entrypoints
-- 🗺️  Support for source map generations
+- Automatic dts generation based on your entrypoints
+- Support for source map generations
+- Honors & inherits your `tsconfig.json` settings
 
 ## Usage
 
@@ -28,7 +31,9 @@ await Bun.build({
   entrypoints: [
     'src/index.ts',
   ],
+
   outdir: './dist',
+
   plugins: [
     dts({
       withSourceMap: true, // optional
@@ -39,21 +44,24 @@ await Bun.build({
 console.log('Build complete ✅')
 ```
 
+> [!NOTE]
+> Please note, this plugin honors your `tsconfig.json` settings (e.g. `compilerOptions.outDir`).
+
 ## 🧪 Testing
 
 ```bash
 bun test
 ```
 
-## 📈 Changelog
+## Changelog
 
 Please see our [releases](https://github.com/stacksjs/bun-plugin-dts-auto/releases) page for more information on what has changed recently.
 
-## 🚜 Contributing
+## Contributing
 
 Please review the [Contributing Guide](https://github.com/stacksjs/contributing) for details.
 
-## 🏝 Community
+## Community
 
 For help, discussion about best practices, or any other conversation that would benefit from being searchable:
 
@@ -63,11 +71,11 @@ For casual chit-chat with others using this package:
 
 [Join the Stacks Discord Server](https://discord.gg/stacksjs)
 
-## 📄 License
+## License
 
 The MIT License (MIT). Please see [LICENSE](https://github.com/stacksjs/bun-plugin-dts-auto/tree/main/LICENSE.md) for more information.
 
-Made with ❤️
+Made with 💙
 
 <!-- Badges -->
 [npm-version-src]: <https://img.shields.io/npm/v/bun-plugin-dts-auto?style=flat-square>

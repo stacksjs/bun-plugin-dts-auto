@@ -1,4 +1,5 @@
 import p from 'node:path'
+import process from 'node:process'
 import type { BunPlugin } from 'bun'
 import ts from 'typescript'
 
