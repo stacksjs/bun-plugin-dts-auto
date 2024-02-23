@@ -15,23 +15,19 @@ interface DtsOptions {
   compiler?: ts.CompilerOptions
   tsconfigPath?: string
   withSourceMap?: boolean
+  outDir?: string
 }
 
 export async function generate(entryPoints: string | string[], options?: DtsOptions) {
   const path = p.resolve(options?.tsconfigPath ?? 'tsconfig.json')
   const configJson = ts.readConfigFile(path, ts.sys.readFile).config
 
-  let opts: TsOptions = {
+  const opts: TsOptions = {
     declaration: true,
     emitDeclarationOnly: true,
     noEmit: false,
-  }
-
-  if (options?.withSourceMap) {
-    opts = {
-      ...opts,
-      declarationMap: true,
-    }
+    outDir: options?.outDir ?? 'dist/types',
+    declarationMap: options?.withSourceMap ?? false,
   }
 
   const parsedConfig = ts.parseJsonConfigFileContent(
@@ -56,6 +52,7 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
 export function dts(options?: DtsOptions): BunPlugin {
   return {
     name: 'bun-plugin-dts-auto',
+
     async setup(build) {
       const entrypoints = [...build.config.entrypoints].sort()
       await generate(entrypoints, options)
