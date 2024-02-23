@@ -71,6 +71,26 @@ For casual chit-chat with others using this package:
 
 [Join the Stacks Discord Server](https://discord.gg/stacksjs)
 
+## Postcardware
+
+You will always be free to use any of the Stacks OSS software. We would also love to see which parts of the world Stacks ends up in. _Receiving postcards makes us happy—and we will publish them on our website._
+
+Our address: Stacks.js, 5710 Crescent Park #107, Playa Vista 90094, CA.
+
+## Sponsors
+
+We would like to extend our thanks to the following sponsors for funding Stacks development. If you are interested in becoming a sponsor, please reach out to us.
+
+- [JetBrains](https://www.jetbrains.com/)
+- [The Solana Foundation](https://solana.com/)
+
+## Credits
+
+Many thanks to the following core technologies & people who have contributed to this package:
+
+- [Chris Breuer](https://github.com/chrisbbreuer)
+- [All Contributors](../../contributors)
+
 ## License
 
 The MIT License (MIT). Please see [LICENSE](https://github.com/stacksjs/bun-plugin-dts-auto/tree/main/LICENSE.md) for more information.

@@ -20,7 +20,7 @@ jobs:
         with:
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install bun
+      - name: Install Bun
         uses: oven-sh/setup-bun@v1
 
       - name: Use cached node_modules
@@ -34,7 +34,7 @@ jobs:
       - name: Install Dependencies
         run: bun install
 
-      - name: Build the release
+      - name: Build Release
         run: bun run build
 
       - name: Publish to npm
