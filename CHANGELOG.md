@@ -1,4 +1,16 @@
 
+## v0.4.1...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.4.1...main)
+
+### 🚀 Enhancements
+
+- Add `cwd` option ([7d83133](https://github.com/stacksjs/bun-plugin-dts-auto/commit/7d83133))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.4.0...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.4.0...main)
