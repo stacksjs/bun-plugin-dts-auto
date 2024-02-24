@@ -8,14 +8,15 @@ interface TsOptions {
   emitDeclarationOnly: boolean
   noEmit: boolean
   declarationMap?: boolean
+  outDir?: ts.CompilerOptions['outDir']
   [index: string]: any
 }
 
 interface DtsOptions {
   compiler?: ts.CompilerOptions
   tsconfigPath?: string
+  outDir?: ts.CompilerOptions['outDir']
   withSourceMap?: boolean
-  outDir?: string
 }
 
 export async function generate(entryPoints: string | string[], options?: DtsOptions) {
