@@ -4,6 +4,7 @@ import type { BunPlugin } from 'bun'
 import ts from 'typescript'
 
 interface TsOptions {
+  rootDir: string
   declaration: boolean
   emitDeclarationOnly: boolean
   noEmit: boolean
@@ -15,6 +16,7 @@ interface TsOptions {
 interface DtsOptions {
   compiler?: ts.CompilerOptions
   tsconfigPath?: string
+  cwd?: string
   outDir?: ts.CompilerOptions['outDir']
   withSourceMap?: boolean
 }
@@ -24,6 +26,7 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
   const configJson = ts.readConfigFile(path, ts.sys.readFile).config
 
   const opts: TsOptions = {
+    rootDir: options?.cwd ?? process.cwd(),
     declaration: true,
     emitDeclarationOnly: true,
     noEmit: false,
@@ -34,7 +37,7 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
   const parsedConfig = ts.parseJsonConfigFileContent(
     configJson,
     ts.sys,
-    process.cwd(),
+    options?.cwd ?? process.cwd(),
     opts,
     path,
   )
