@@ -48,7 +48,7 @@ console.log('Build complete ✅')
 > [!NOTE]
 > Please note, this plugin honors your `tsconfig.json` `compilerOptions.outDir` setting. If you want to override this, you can do so by setting the `outdir` option in the build option object.
 
-## 🧪 Testing
+## Testing
 
 ```bash
 bun test
