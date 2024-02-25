@@ -1,4 +1,16 @@
 
+## v0.5.1...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.5.1...main)
+
+### 🏡 Chore
+
+- Change to `outdir` naming ([dfeb3bb](https://github.com/stacksjs/bun-plugin-dts-auto/commit/dfeb3bb))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.5.0...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.5.0...main)
