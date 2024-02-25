@@ -1,4 +1,21 @@
 
+## v0.5.0...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.5.0...main)
+
+### 🩹 Fixes
+
+- Set `src` to `rootDir` ([26b6018](https://github.com/stacksjs/bun-plugin-dts-auto/commit/26b6018))
+
+### 🏡 Chore
+
+- Readme update ([5c5139f](https://github.com/stacksjs/bun-plugin-dts-auto/commit/5c5139f))
+- Adjust `outDir` to have colocated types ([a7b02f3](https://github.com/stacksjs/bun-plugin-dts-auto/commit/a7b02f3))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.4.1...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.4.1...main)
