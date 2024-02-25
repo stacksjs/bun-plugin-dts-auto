@@ -38,6 +38,7 @@ await Bun.build({
     dts({
       cwd: import.meta.dir, // optional
       withSourceMap: true, // optional
+      outdir: 'dist/types', // optional
     }),
   ],
 })

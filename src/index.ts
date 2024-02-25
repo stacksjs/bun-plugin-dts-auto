@@ -17,7 +17,7 @@ interface DtsOptions {
   compiler?: ts.CompilerOptions
   tsconfigPath?: string
   cwd?: string
-  outDir?: ts.CompilerOptions['outDir']
+  outdir?: ts.CompilerOptions['outDir'] // sadly, the bundler uses `outdir` instead of `outDir` and to avoid confusion, we'll use `outdir` here
   withSourceMap?: boolean
 }
 
@@ -30,7 +30,7 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
     declaration: true,
     emitDeclarationOnly: true,
     noEmit: false,
-    outDir: options?.outDir ?? 'dist/types',
+    outDir: options?.outdir ?? 'dist/types',
     declarationMap: options?.withSourceMap ?? false,
   }
 
