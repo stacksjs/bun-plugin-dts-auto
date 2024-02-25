@@ -25,20 +25,24 @@ interface DtsOptions {
 export async function generate(entryPoints: string | string[], options?: DtsOptions) {
   const path = p.resolve(options?.tsconfigPath ?? 'tsconfig.json')
   const configJson = ts.readConfigFile(path, ts.sys.readFile).config
+  const cwd = options?.cwd ?? process.cwd()
+  const rootDir = options?.rootDir ?? `${cwd}/src`
+  const outDir = options?.outdir ?? 'dist/types'
+  const declarationMap = options?.withSourceMap ?? false
 
   const opts: TsOptions = {
-    rootDir: options?.rootDir ?? options?.cwd ?? process.cwd(),
+    rootDir,
+    outDir,
+    declarationMap,
     declaration: true,
     emitDeclarationOnly: true,
     noEmit: false,
-    outDir: options?.outdir ?? 'dist/types',
-    declarationMap: options?.withSourceMap ?? false,
   }
 
   const parsedConfig = ts.parseJsonConfigFileContent(
     configJson,
     ts.sys,
-    options?.cwd ?? process.cwd(),
+    cwd,
     opts,
     path,
   )
