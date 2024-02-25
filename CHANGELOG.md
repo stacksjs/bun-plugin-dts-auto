@@ -1,4 +1,36 @@
 
+## v0.6.1...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.6.1...main)
+
+### 🚀 Enhancements
+
+- Default to the root src dir ([081b86d](https://github.com/stacksjs/bun-plugin-dts-auto/commit/081b86d))
+
+### 🏡 Chore
+
+- Adjust readme ([2e80f42](https://github.com/stacksjs/bun-plugin-dts-auto/commit/2e80f42))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
+## v0.6.1...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.6.1...main)
+
+### 🚀 Enhancements
+
+- Default to the root src dir ([081b86d](https://github.com/stacksjs/bun-plugin-dts-auto/commit/081b86d))
+
+### 🏡 Chore
+
+- Adjust readme ([2e80f42](https://github.com/stacksjs/bun-plugin-dts-auto/commit/2e80f42))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.6.0...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.6.0...main)
