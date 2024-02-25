@@ -28,6 +28,8 @@ You may now use the plugin:
 import dts from 'bun-plugin-dts-auto'
 
 await Bun.build({
+  root: './src', // optional
+
   entrypoints: [
     'src/index.ts',
   ],
