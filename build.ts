@@ -12,7 +12,7 @@ const result = await Bun.build({
   plugins: [
     dts({
       cwd: import.meta.dir,
-      outDir: 'dist',
+      outdir: 'dist',
     }),
   ],
 })
