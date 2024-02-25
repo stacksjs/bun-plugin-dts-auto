@@ -1,4 +1,16 @@
 
+## v0.5.3...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.5.3...main)
+
+### 🚀 Enhancements
+
+- Use default build outdir unless option provided ([5bae612](https://github.com/stacksjs/bun-plugin-dts-auto/commit/5bae612))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.5.2...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.5.2...main)
