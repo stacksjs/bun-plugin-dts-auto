@@ -1,4 +1,20 @@
 
+## v0.6.0...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.6.0...main)
+
+### 🩹 Fixes
+
+- Properly allow for rootDir overriding ([a902f45](https://github.com/stacksjs/bun-plugin-dts-auto/commit/a902f45))
+
+### 🏡 Chore
+
+- Do not target src dir by default ([44e0a22](https://github.com/stacksjs/bun-plugin-dts-auto/commit/44e0a22))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.5.3...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.5.3...main)
