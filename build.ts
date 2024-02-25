@@ -6,13 +6,12 @@ console.log('Building...')
 
 const result = await Bun.build({
   entrypoints: ['src/index.ts'],
-  outdir: './dist',
+  outdir: 'dist',
   target: 'bun',
 
   plugins: [
     dts({
       cwd: import.meta.dir,
-      outdir: 'dist',
     }),
   ],
 })

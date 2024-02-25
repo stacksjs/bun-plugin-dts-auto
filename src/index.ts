@@ -59,7 +59,11 @@ export function dts(options?: DtsOptions): BunPlugin {
 
     async setup(build) {
       const entrypoints = [...build.config.entrypoints].sort()
-      await generate(entrypoints, options)
+
+      await generate(entrypoints, {
+        outdir: build.config.outdir,
+        ...options,
+      })
     },
   }
 }
