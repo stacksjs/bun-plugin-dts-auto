@@ -27,7 +27,7 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
   const configJson = ts.readConfigFile(path, ts.sys.readFile).config
 
   const opts: TsOptions = {
-    rootDir: options?.cwd ?? process.cwd(),
+    rootDir: options?.rootDir ?? options?.cwd ?? process.cwd(),
     declaration: true,
     emitDeclarationOnly: true,
     noEmit: false,
