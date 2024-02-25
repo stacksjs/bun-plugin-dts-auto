@@ -37,6 +37,7 @@ await Bun.build({
   plugins: [
     dts({
       cwd: import.meta.dir, // optional
+      rootDir: `${import.meta.dir}/src`, // optional
       withSourceMap: true, // optional
       outdir: 'dist/types', // optional
     }),
@@ -47,7 +48,7 @@ console.log('Build complete ✅')
 ```
 
 > [!NOTE]
-> Please note, this plugin honors your `tsconfig.json` `compilerOptions.outDir` setting. If you want to override this, you can do so by setting the `outdir` option in the build option object.
+> Please note, this plugin honors your `tsconfig.json` `compilerOptions.outDir` setting. If you want to override this, you can do so by setting the `outdir`, `rootDir`, and `cwd` option in the build object.
 
 ## Testing
 
