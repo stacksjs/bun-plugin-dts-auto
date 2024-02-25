@@ -17,6 +17,7 @@ interface DtsOptions {
   compiler?: ts.CompilerOptions
   tsconfigPath?: string
   cwd?: string
+  rootDir?: string
   outdir?: ts.CompilerOptions['outDir'] // sadly, the bundler uses `outdir` instead of `outDir` and to avoid confusion, we'll use `outdir` here
   withSourceMap?: boolean
 }
@@ -26,7 +27,7 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
   const configJson = ts.readConfigFile(path, ts.sys.readFile).config
 
   const opts: TsOptions = {
-    rootDir: options?.cwd ? p.join(options.cwd, 'src') : p.join(process.cwd(), 'src'),
+    rootDir: options?.cwd ?? process.cwd(),
     declaration: true,
     emitDeclarationOnly: true,
     noEmit: false,
