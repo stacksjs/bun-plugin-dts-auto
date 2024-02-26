@@ -1,4 +1,16 @@
 
+## v0.8.0...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.8.0...main)
+
+### 🚀 Enhancements
+
+- Allow setting base ([455c47c](https://github.com/stacksjs/bun-plugin-dts-auto/commit/455c47c))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.7.0...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.7.0...main)
