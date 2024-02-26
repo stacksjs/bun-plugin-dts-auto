@@ -1,4 +1,20 @@
 
+## v0.9.0...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.9.0...main)
+
+### 🩹 Fixes
+
+- Ensure `baseUrl` is set correctly ([3e9e1bf](https://github.com/stacksjs/bun-plugin-dts-auto/commit/3e9e1bf))
+
+### 🏡 Chore
+
+- Allow for leading `./` ([2c99891](https://github.com/stacksjs/bun-plugin-dts-auto/commit/2c99891))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.8.0...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.8.0...main)
