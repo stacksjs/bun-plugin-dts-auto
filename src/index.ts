@@ -86,6 +86,7 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
 
     const opts: TsOptions = {
       base,
+      baseUrl: base,
       rootDir,
       outDir,
       declarationMap,
