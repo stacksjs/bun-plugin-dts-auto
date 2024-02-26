@@ -5,6 +5,7 @@ import ts from 'typescript'
 
 interface TsOptions {
   rootDir: string
+  base: string
   declaration: boolean
   emitDeclarationOnly: boolean
   noEmit: boolean
@@ -14,6 +15,13 @@ interface TsOptions {
 }
 
 interface DtsOptions {
+  /**
+   * The base directory of the source files. If not provided, it
+   * will use the current working directory of the process.
+   * @default process.cwd()
+   */
+  base?: string
+
   /**
    * The TypeScript compiler options. If not provided, it will use
    * the `tsconfig.json` file in the current working directory.
@@ -71,11 +79,13 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
   try {
     const configJson = ts.readConfigFile(path, ts.sys.readFile).config
     const cwd = options?.cwd ?? process.cwd()
+    const base = options?.base ?? cwd
     const rootDir = `${cwd}/${root}`
     const outDir = options?.outdir ?? 'dist/types'
     const declarationMap = options?.withSourceMap ?? false
 
     const opts: TsOptions = {
+      base,
       rootDir,
       outDir,
       declarationMap,
