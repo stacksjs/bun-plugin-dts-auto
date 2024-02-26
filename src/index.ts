@@ -74,7 +74,7 @@ interface DtsOptions {
  */
 export async function generate(entryPoints: string | string[], options?: DtsOptions) {
   const path = p.resolve(options?.tsconfigPath ?? 'tsconfig.json')
-  const root = options?.root ?? 'src'
+  const root = (options?.root ?? 'src').replace(/^\.\//, '')
 
   try {
     const configJson = ts.readConfigFile(path, ts.sys.readFile).config
