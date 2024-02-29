@@ -52,7 +52,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.6.1",
+    "@commitlint/cli": "^19.0.3",
     "@stacksjs/eslint-config": "^0.58.73",
     "@types/node": "^20.11.20",
     "bumpp": "^9.3.0",
