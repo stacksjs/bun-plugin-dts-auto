@@ -54,7 +54,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.0.3",
     "@stacksjs/eslint-config": "^0.58.73",
-    "@types/node": "^20.11.20",
+    "@types/node": "^20.11.24",
     "bumpp": "^9.3.0",
     "changelogen": "^0.5.5",
     "commitizen": "^4.3.0",
