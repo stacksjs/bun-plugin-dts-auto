@@ -59,7 +59,7 @@
     "changelogen": "^0.5.5",
     "commitizen": "^4.3.0",
     "cz-git": "^1.9.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "lint-staged": "^15.2.2",
     "simple-git-hooks": "^2.10.0",
     "typescript": "^5.4.2"
