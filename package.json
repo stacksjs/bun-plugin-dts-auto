@@ -52,17 +52,17 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.0.3",
+    "@commitlint/cli": "^19.2.1",
     "@stacksjs/eslint-config": "^0.59.11",
     "@types/bun": "^1.0.12",
     "bumpp": "^9.4.0",
     "changelogen": "^0.5.5",
     "commitizen": "^4.3.0",
-    "cz-git": "^1.9.0",
+    "cz-git": "^1.9.1",
     "eslint": "^9.0.0",
     "lint-staged": "^15.2.2",
-    "simple-git-hooks": "^2.10.0",
-    "typescript": "^5.4.2"
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.4.4"
   },
   "simple-git-hooks": {
     "pre-commit": "bun lint-staged",
