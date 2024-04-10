@@ -1,4 +1,22 @@
 
+## v0.10.0...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.10.0...main)
+
+### 🚀 Enhancements
+
+- Make use of `pkgx` ([17cada3](https://github.com/stacksjs/bun-plugin-dts-auto/commit/17cada3))
+
+### 🏡 Chore
+
+- Use `@types/bun` ([dc0c53a](https://github.com/stacksjs/bun-plugin-dts-auto/commit/dc0c53a))
+- Do not use `*.* text eol=lf` ([a9f34d3](https://github.com/stacksjs/bun-plugin-dts-auto/commit/a9f34d3))
+- Update lockfile ([3ba4695](https://github.com/stacksjs/bun-plugin-dts-auto/commit/3ba4695))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.9.0...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.9.0...main)
