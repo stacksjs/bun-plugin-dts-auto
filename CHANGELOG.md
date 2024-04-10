@@ -1,4 +1,8 @@
 
+## v0.11.0...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.11.0...main)
+
 ## v0.10.0...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.10.0...main)
