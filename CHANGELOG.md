@@ -1,4 +1,21 @@
 
+## v0.11.1...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.11.1...main)
+
+### 🩹 Fixes
+
+- Properly store file based on options ([9c8c619](https://github.com/stacksjs/bun-plugin-dts-auto/commit/9c8c619))
+
+### 🏡 Chore
+
+- Use biome ([a03646e](https://github.com/stacksjs/bun-plugin-dts-auto/commit/a03646e))
+- Remove sourcemap support ([33c3766](https://github.com/stacksjs/bun-plugin-dts-auto/commit/33c3766))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.11.0...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.11.0...main)
