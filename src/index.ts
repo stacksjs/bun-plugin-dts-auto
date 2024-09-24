@@ -66,7 +66,7 @@ interface DtsOptions {
  * @param entryPoints The entry points of the TypeScript source files.
  * @param options The options for generating the declaration files.
  */
-export async function generate(entryPoints: string | string[], options?: DtsOptions) {
+export async function generate(entryPoints: string | string[], options?: DtsOptions): Promise<void> {
   const path = p.resolve(options?.tsconfigPath ?? 'tsconfig.json')
   const root = (options?.root ?? 'src').replace(/^\.\//, '')
 
@@ -75,30 +75,85 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
     const cwd = options?.cwd ?? process.cwd()
     const base = options?.base ?? cwd
     const rootDir = `${cwd}/${root}`
-    const outDir = options?.outdir ?? 'dist/types'
 
     const opts: TsOptions = {
       base,
       baseUrl: base,
       rootDir,
-      outDir,
       declaration: true,
       emitDeclarationOnly: true,
       noEmit: false,
+      isolatedDeclarations: undefined,
       ...(options?.include && { include: options.include }),
     }
 
     const parsedConfig = ts.parseJsonConfigFileContent(configJson, ts.sys, cwd, opts, path)
+    parsedConfig.options.emitDeclarationOnly = true
+    // console.log('Root directory:', rootDir)
+    // console.log('Output directory:', parsedConfig.options.outDir)
+
     const host = ts.createCompilerHost(parsedConfig.options)
+
+    // Custom transformers to modify the output path of declaration files
+    const customTransformers: ts.CustomTransformers = {
+      afterDeclarations: [
+        (context) => {
+          return (sourceFile) => {
+            if ('isDeclarationFile' in sourceFile) {
+              const originalFileName = sourceFile.fileName
+              const entryPointName = p.basename(originalFileName, '.ts')
+              // console.log('originalFileName', originalFileName)
+              // console.log('entryPointName', entryPointName)
+              const newFileName = p.join(parsedConfig.options.outDir || 'dist', `${entryPointName}.d.ts`)
+              // console.log('newFileName', newFileName)
+
+              return ts.factory.updateSourceFile(
+                sourceFile,
+                sourceFile.statements,
+                sourceFile.isDeclarationFile,
+                sourceFile.referencedFiles,
+                sourceFile.typeReferenceDirectives,
+                sourceFile.hasNoDefaultLib,
+                [{ fileName: newFileName, pos: 0, end: 0 }],
+              )
+            }
+            return sourceFile
+          }
+        },
+      ],
+    }
+
+    // console.log('Parsed config:', JSON.stringify(parsedConfig.options, null, 2))
+
     const program = ts.createProgram({
       rootNames: Array.isArray(entryPoints) ? entryPoints : [entryPoints],
       options: parsedConfig.options,
       host,
     })
 
-    program.emit()
-  }
-  catch (error) {
+    // console.log('Program created with root names:', program.getRootFileNames())
+
+    // const emitResult = program.emit(
+    program.emit(
+      undefined,
+      (fileName, data) => {
+        if (fileName.endsWith('.d.ts')) {
+          // console.log('Emitting declaration file:', fileName)
+          const outputPath = p.join(parsedConfig.options.outDir || 'dist', p.relative(rootDir, fileName))
+          // console.log('Attempting to write file:', outputPath)
+          try {
+            ts.sys.writeFile(outputPath, data)
+            // console.log('Successfully wrote file:', outputPath)
+          } catch (error) {
+            console.error('Error writing file:', outputPath, error)
+          }
+        }
+      },
+      undefined,
+      true, // Only emit declarations
+      customTransformers,
+    )
+  } catch (error) {
     console.error('Error generating types:', error)
     throw error
   }
