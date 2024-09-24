@@ -2,16 +2,12 @@
   "compilerOptions": {
     "incremental": true,
     "target": "esnext",
-    "lib": [
-      "esnext"
-    ],
+    "lib": ["esnext"],
     "moduleDetection": "force",
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     "allowImportingTsExtensions": true,
     "strict": true,
     "strictNullChecks": true,

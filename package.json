@@ -35,14 +35,11 @@
   },
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist",
-    "src"
-  ],
+  "files": ["dist", "src"],
   "scripts": {
     "build": "bun build.ts",
-    "lint": "bunx eslint .",
-    "lint:fix": "bunx eslint . --fix",
+    "lint": "biome check .",
+    "lint:fix": "biome check --fix .",
     "fresh": "bunx rimraf node_modules/ bun.lock && bun i",
     "commit": "git cz",
     "changelog": "bunx changelogen --output CHANGELOG.md",
@@ -52,14 +49,14 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.2",
     "@commitlint/cli": "^19.5.0",
-    "@stacksjs/eslint-config": "^0.59.11",
+    "@stacksjs/biome-config": "^0.1.5",
     "@types/bun": "^1.1.10",
     "bumpp": "^9.5.2",
     "changelogen": "^0.5.7",
     "commitizen": "^4.3.0",
     "cz-git": "^1.9.4",
-    "eslint": "^9.11.1",
     "lint-staged": "^15.2.10",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.6.2"
@@ -69,7 +66,7 @@
     "commit-msg": "bunx --no -- commitlint --edit $1"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,vue}": "eslint --fix"
+    "*.{js,jsx,ts,tsx,vue}": "biome check --fix ."
   },
   "config": {
     "commitizen": {
