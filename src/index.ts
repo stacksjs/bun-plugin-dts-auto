@@ -55,12 +55,6 @@ interface DtsOptions {
   outdir?: ts.CompilerOptions['outDir'] // sadly, the bundler uses `outdir` instead of `outDir` and to avoid confusion, we'll use `outdir` here
 
   /**
-   * Whether to generate source maps for the declaration files.
-   * @default false
-   */
-  withSourceMap?: boolean
-
-  /**
    * The files to include. If not provided, it will include all files in the
    * `tsconfig.json` file, or the Bun build entry points if provided.
    */
@@ -82,14 +76,12 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
     const base = options?.base ?? cwd
     const rootDir = `${cwd}/${root}`
     const outDir = options?.outdir ?? 'dist/types'
-    const declarationMap = options?.withSourceMap ?? false
 
     const opts: TsOptions = {
       base,
       baseUrl: base,
       rootDir,
       outDir,
-      declarationMap,
       declaration: true,
       emitDeclarationOnly: true,
       noEmit: false,
