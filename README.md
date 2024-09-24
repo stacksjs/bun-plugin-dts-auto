@@ -13,7 +13,6 @@ This Bun plugin generates dts files for your TypeScript project.
 ## Features
 
 - Automatic dts generation based on your entrypoints
-- Support for source map generations
 - Honors & inherits your `tsconfig.json` settings
 
 ## Usage
@@ -40,7 +39,6 @@ await Bun.build({
     dts({
       cwd: import.meta.dir, // optional
       rootDir: `${import.meta.dir}/src`, // optional
-      withSourceMap: true, // optional
       outdir: 'dist/types', // optional
     }),
   ],
@@ -80,7 +78,7 @@ For casual chit-chat with others using this package:
 
 You will always be free to use any of the Stacks OSS software. We would also love to see which parts of the world Stacks ends up in. _Receiving postcards makes us happy—and we will publish them on our website._
 
-Our address: Stacks.js, 5710 Crescent Park #107, Playa Vista 90094, CA.
+Our address: Stacks.js, 12665 Village Ln #2306, Playa Vista, CA 90094, United States 🌎
 
 ## Sponsors
 
