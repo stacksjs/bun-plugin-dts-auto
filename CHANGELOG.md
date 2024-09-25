@@ -1,4 +1,17 @@
 
+## v0.14.0...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.14.0...main)
+
+### 🏡 Chore
+
+- Add changelog ([66032d7](https://github.com/stacksjs/bun-plugin-dts-auto/commit/66032d7))
+- Minor adjustments ([c797584](https://github.com/stacksjs/bun-plugin-dts-auto/commit/c797584))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.12.0...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.12.0...main)
