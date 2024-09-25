@@ -102,15 +102,19 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
 
     const host = ts.createCompilerHost(compilerOptions)
 
-    // console.log('Debug:', {
-    //   cwd,
-    //   rootDir,
-    //   outDir,
-    //   entryPoints: Array.isArray(entryPoints) ? entryPoints : [entryPoints],
-    // })
+    // Filter entry points to only include files within the current package
+    const filteredEntryPoints = (Array.isArray(entryPoints) ? entryPoints : [entryPoints]).filter((entryPoint) => {
+      const relativePath = p.relative(cwd, entryPoint)
+      return !relativePath.startsWith('..') && !p.isAbsolute(relativePath)
+    })
+
+    if (filteredEntryPoints.length === 0) {
+      console.warn('No valid entry points found within the current package.')
+      return
+    }
 
     const program = ts.createProgram({
-      rootNames: Array.isArray(entryPoints) ? entryPoints : [entryPoints],
+      rootNames: filteredEntryPoints,
       options: compilerOptions,
       host,
     })
@@ -123,7 +127,6 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
           fs.mkdirSync(dir, { recursive: true })
         }
         fs.writeFileSync(outputPath, data)
-        // console.log(`Generated: ${outputPath}`)
       }
     })
 
