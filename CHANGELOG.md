@@ -1,4 +1,16 @@
 
+## v0.15.3...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.15.3...main)
+
+### 🩹 Fixes
+
+- Monorepo problems ([e518b30](https://github.com/stacksjs/bun-plugin-dts-auto/commit/e518b30))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.15.2...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.15.2...main)
