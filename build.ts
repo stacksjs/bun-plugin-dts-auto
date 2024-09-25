@@ -1,7 +1,6 @@
 import process from 'node:process'
 import dts from './src/index'
 
-// eslint-disable-next-line no-console
 console.log('Building...')
 
 const result = await Bun.build({
@@ -9,11 +8,7 @@ const result = await Bun.build({
   outdir: 'dist',
   target: 'bun',
 
-  plugins: [
-    dts({
-      cwd: import.meta.dir,
-    }),
-  ],
+  plugins: [dts()],
 })
 
 if (!result.success) {

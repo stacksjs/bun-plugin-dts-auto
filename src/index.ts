@@ -76,6 +76,15 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
     const base = options?.base ?? cwd
     const rootDir = `${cwd}/${root}`
 
+    // Merge the base tsconfig with the package-specific one
+    const mergedConfig = {
+      ...configJson,
+      compilerOptions: {
+        ...configJson.compilerOptions,
+        ...options?.compiler,
+      },
+    }
+
     const opts: TsOptions = {
       base,
       baseUrl: base,
@@ -87,10 +96,14 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
       ...(options?.include && { include: options.include }),
     }
 
-    const parsedConfig = ts.parseJsonConfigFileContent(configJson, ts.sys, cwd, opts, path)
+    const parsedConfig = ts.parseJsonConfigFileContent(mergedConfig, ts.sys, cwd, opts, path)
     parsedConfig.options.emitDeclarationOnly = true
-    // console.log('Root directory:', rootDir)
-    // console.log('Output directory:', parsedConfig.options.outDir)
+
+    // Use the outdir from options if provided, otherwise use the one from tsconfig
+    const outDir = options?.outdir || parsedConfig.options.outDir || 'dist'
+
+    // Ensure outDir is relative to the package root, not the monorepo root
+    parsedConfig.options.outDir = p.resolve(cwd, outDir)
 
     const host = ts.createCompilerHost(parsedConfig.options)
 
@@ -102,10 +115,7 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
             if ('isDeclarationFile' in sourceFile) {
               const originalFileName = sourceFile.fileName
               const entryPointName = p.basename(originalFileName, '.ts')
-              // console.log('originalFileName', originalFileName)
-              // console.log('entryPointName', entryPointName)
               const newFileName = p.join(parsedConfig.options.outDir || 'dist', `${entryPointName}.d.ts`)
-              // console.log('newFileName', newFileName)
 
               return ts.factory.updateSourceFile(
                 sourceFile,
@@ -123,27 +133,20 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
       ],
     }
 
-    // console.log('Parsed config:', JSON.stringify(parsedConfig.options, null, 2))
-
     const program = ts.createProgram({
       rootNames: Array.isArray(entryPoints) ? entryPoints : [entryPoints],
       options: parsedConfig.options,
       host,
     })
 
-    // console.log('Program created with root names:', program.getRootFileNames())
-
-    // const emitResult = program.emit(
     program.emit(
       undefined,
       (fileName, data) => {
         if (fileName.endsWith('.d.ts')) {
-          // console.log('Emitting declaration file:', fileName)
           const outputPath = p.join(parsedConfig.options.outDir || 'dist', p.relative(rootDir, fileName))
-          // console.log('Attempting to write file:', outputPath)
           try {
             ts.sys.writeFile(outputPath, data)
-            // console.log('Successfully wrote file:', outputPath)
+            console.log('Successfully wrote file:', outputPath)
           } catch (error) {
             console.error('Error writing file:', outputPath, error)
           }
@@ -169,12 +172,13 @@ export function dts(options?: DtsOptions): BunPlugin {
 
     async setup(build) {
       const entrypoints = [...build.config.entrypoints].sort()
-      const root = build.config.root ?? 'src'
+      const root = options?.root ?? build.config.root ?? 'src'
 
       await generate(entrypoints, {
         root,
         include: entrypoints,
-        outdir: build.config.outdir,
+        outdir: options?.outdir || build.config.outdir,
+        cwd: options?.cwd || process.cwd(),
         ...options,
       })
     },

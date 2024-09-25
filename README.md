@@ -14,6 +14,7 @@ This Bun plugin generates dts files for your TypeScript project.
 
 - Automatic dts generation based on your entrypoints
 - Honors & inherits your `tsconfig.json` settings
+- Monorepo support
 
 ## Usage
 
