@@ -1,4 +1,4 @@
-name: Release
+name: CI
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           registry-url: 'https://registry.npmjs.org'
@@ -34,7 +34,7 @@ jobs:
       - name: Install Dependencies
         run: bun install
 
-      - name: Build Release
+      - name: Build the release
         run: bun run build
 
       - name: Publish to npm
@@ -43,6 +43,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
       - name: Create GitHub release
-        run: npx changelogithub
+        run: bunx changelogithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

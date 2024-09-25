@@ -1,9 +1,8 @@
 const scopes = ['', 'ci', 'deps', 'dx', 'example', 'release', 'readme', 'build']
 
 /** @type {import('cz-git').UserConfig} */
-module.exports = {
+export default {
   rules: {
-    // @see: https://commitlint.js.org/#/reference-rules
     'scope-enum': [2, 'always', scopes],
   },
   prompt: {
