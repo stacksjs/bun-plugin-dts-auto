@@ -1,4 +1,16 @@
 
+## v0.15.1...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.15.1...main)
+
+### 🩹 Fixes
+
+- Generate declaration files with correct references ([eb3eb0d](https://github.com/stacksjs/bun-plugin-dts-auto/commit/eb3eb0d))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.15.0...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.15.0...main)
