@@ -1,4 +1,20 @@
 
+## v0.15.2...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.15.2...main)
+
+### 🩹 Fixes
+
+- Filter entry points ([37c93a1](https://github.com/stacksjs/bun-plugin-dts-auto/commit/37c93a1))
+
+### 🏡 Chore
+
+- Update readme ([9081b61](https://github.com/stacksjs/bun-plugin-dts-auto/commit/9081b61))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.15.1...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.15.1...main)
