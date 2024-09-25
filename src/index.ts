@@ -146,7 +146,7 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
           const outputPath = p.join(parsedConfig.options.outDir || 'dist', p.relative(rootDir, fileName))
           try {
             ts.sys.writeFile(outputPath, data)
-            console.log('Successfully wrote file:', outputPath)
+            // console.log('Successfully wrote file:', outputPath)
           } catch (error) {
             console.error('Error writing file:', outputPath, error)
           }
