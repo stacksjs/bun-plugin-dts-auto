@@ -51,7 +51,7 @@ export interface DtsOptions {
   /**
    * The output directory of the declaration files. Please note,
    * it is relative to the current working directory.
-   * @default 'dist/types'
+   * @default 'dist'
    */
   outdir?: ts.CompilerOptions['outDir'] // sadly, the bundler uses `outdir` instead of `outDir` and to avoid confusion, we'll use `outdir` here
 
@@ -68,25 +68,24 @@ export interface DtsOptions {
  * @param options The options for generating the declaration files.
  */
 export async function generate(entryPoints: string | string[], options?: DtsOptions): Promise<void> {
-  const path = p.resolve(options?.tsconfigPath ?? 'tsconfig.json')
+  const cwd = options?.cwd ?? process.cwd()
+  const configPath = options?.tsconfigPath ?? p.resolve(cwd, 'tsconfig.json')
   const root = (options?.root ?? 'src').replace(/^\.\//, '')
 
+  console.log('TSConfig path:', configPath)
+  console.log('Root directory:', root)
+
   try {
-    const configFile = ts.readConfigFile(path, ts.sys.readFile)
+    const configFile = ts.readConfigFile(configPath, ts.sys.readFile)
     if (configFile.error) {
       throw new Error(`Failed to read tsconfig: ${configFile.error.messageText}`)
     }
 
-    const cwd = options?.cwd ?? process.cwd()
-    const base = options?.base ?? cwd
-    const rootDir = p.resolve(cwd, root)
-
     const parsedCommandLine = ts.parseJsonConfigFileContent(configFile.config, ts.sys, cwd)
+
     if (parsedCommandLine.errors.length) {
       throw new Error(`Failed to parse tsconfig: ${parsedCommandLine.errors.map((e) => e.messageText).join(', ')}`)
     }
-
-    const outDir = p.resolve(cwd, options?.outdir || parsedCommandLine.options.outDir || 'dist')
 
     const compilerOptions: ts.CompilerOptions = {
       ...parsedCommandLine.options,
@@ -94,39 +93,29 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
       declaration: true,
       emitDeclarationOnly: true,
       noEmit: false,
-      declarationMap: true,
-      outDir: outDir,
-      rootDir: rootDir,
-      incremental: false, // Disable incremental compilation
+      outDir: options?.outdir ?? './dist',
+      rootDir: p.resolve(cwd, root),
     }
+
+    console.log('Compiler Options:', JSON.stringify(compilerOptions, null, 2))
 
     const host = ts.createCompilerHost(compilerOptions)
 
-    // Filter entry points to only include files within the current package
-    const filteredEntryPoints = (Array.isArray(entryPoints) ? entryPoints : [entryPoints]).filter((entryPoint) => {
-      const relativePath = p.relative(cwd, entryPoint)
-      return !relativePath.startsWith('..') && !p.isAbsolute(relativePath)
-    })
-
-    if (filteredEntryPoints.length === 0) {
-      console.warn('No valid entry points found within the current package.')
-      return
-    }
-
     const program = ts.createProgram({
-      rootNames: filteredEntryPoints,
+      rootNames: parsedCommandLine.fileNames.filter((file) => file.startsWith(compilerOptions.rootDir ?? 'src')),
       options: compilerOptions,
       host,
     })
 
     const emitResult = program.emit(undefined, (fileName, data) => {
       if (fileName.endsWith('.d.ts') || fileName.endsWith('.d.ts.map')) {
-        const outputPath = p.join(outDir, p.relative(rootDir, fileName))
+        const outputPath = p.join(compilerOptions.outDir ?? './dist', p.relative(p.resolve(cwd, root), fileName))
         const dir = p.dirname(outputPath)
         if (!fs.existsSync(dir)) {
           fs.mkdirSync(dir, { recursive: true })
         }
         fs.writeFileSync(outputPath, data)
+        console.log('Emitted:', outputPath)
       }
     })
 
@@ -166,8 +155,9 @@ export function dts(options?: DtsOptions): BunPlugin {
       await generate(entrypoints, {
         root,
         include: entrypoints,
-        outdir: options?.outdir || build.config.outdir,
         cwd: options?.cwd || process.cwd(),
+        tsconfigPath: options?.tsconfigPath,
+        outdir: options?.outdir || build.config.outdir,
         ...options,
       })
     },
