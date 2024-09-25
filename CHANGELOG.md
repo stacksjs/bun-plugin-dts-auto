@@ -1,4 +1,21 @@
 
+## v0.12.0...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.12.0...main)
+
+### 🏡 Chore
+
+- Lint ([0689642](https://github.com/stacksjs/bun-plugin-dts-auto/commit/0689642))
+- Add zed biome settings ([78854d3](https://github.com/stacksjs/bun-plugin-dts-auto/commit/78854d3))
+- Adjust readme ([19f87ba](https://github.com/stacksjs/bun-plugin-dts-auto/commit/19f87ba))
+- Adjust base test ([8d45811](https://github.com/stacksjs/bun-plugin-dts-auto/commit/8d45811))
+- Update bun ([dd7563f](https://github.com/stacksjs/bun-plugin-dts-auto/commit/dd7563f))
+- Add unit tests ([00dfaa3](https://github.com/stacksjs/bun-plugin-dts-auto/commit/00dfaa3))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.11.1...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.11.1...main)
