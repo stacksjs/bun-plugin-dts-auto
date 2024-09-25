@@ -1,9 +1,10 @@
+import fs from 'node:fs'
 import p from 'node:path'
 import process from 'node:process'
 import type { BunPlugin } from 'bun'
 import ts from 'typescript'
 
-interface TsOptions {
+export interface TsOptions {
   rootDir: string
   base: string
   declaration: boolean
@@ -14,7 +15,7 @@ interface TsOptions {
   [index: string]: any
 }
 
-interface DtsOptions {
+export interface DtsOptions {
   /**
    * The base directory of the source files. If not provided, it
    * will use the current working directory of the process.
@@ -71,91 +72,76 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
   const root = (options?.root ?? 'src').replace(/^\.\//, '')
 
   try {
-    const configJson = ts.readConfigFile(path, ts.sys.readFile).config
-    const cwd = options?.cwd ?? process.cwd()
-    const base = options?.base ?? cwd
-    const rootDir = `${cwd}/${root}`
-
-    // Merge the base tsconfig with the package-specific one
-    const mergedConfig = {
-      ...configJson,
-      compilerOptions: {
-        ...configJson.compilerOptions,
-        ...options?.compiler,
-      },
+    const configFile = ts.readConfigFile(path, ts.sys.readFile)
+    if (configFile.error) {
+      throw new Error(`Failed to read tsconfig: ${configFile.error.messageText}`)
     }
 
-    const opts: TsOptions = {
-      base,
-      baseUrl: base,
-      rootDir,
+    const cwd = options?.cwd ?? process.cwd()
+    const base = options?.base ?? cwd
+    const rootDir = p.resolve(cwd, root)
+
+    const parsedCommandLine = ts.parseJsonConfigFileContent(configFile.config, ts.sys, cwd)
+    if (parsedCommandLine.errors.length) {
+      throw new Error(`Failed to parse tsconfig: ${parsedCommandLine.errors.map((e) => e.messageText).join(', ')}`)
+    }
+
+    const outDir = p.resolve(cwd, options?.outdir || parsedCommandLine.options.outDir || 'dist')
+
+    const compilerOptions: ts.CompilerOptions = {
+      ...parsedCommandLine.options,
+      ...options?.compiler,
       declaration: true,
       emitDeclarationOnly: true,
       noEmit: false,
-      isolatedDeclarations: undefined,
-      ...(options?.include && { include: options.include }),
+      declarationMap: true,
+      outDir: outDir,
+      rootDir: rootDir,
+      incremental: false, // Disable incremental compilation
     }
 
-    const parsedConfig = ts.parseJsonConfigFileContent(mergedConfig, ts.sys, cwd, opts, path)
-    parsedConfig.options.emitDeclarationOnly = true
+    const host = ts.createCompilerHost(compilerOptions)
 
-    // Use the outdir from options if provided, otherwise use the one from tsconfig
-    const outDir = options?.outdir || parsedConfig.options.outDir || 'dist'
-
-    // Ensure outDir is relative to the package root, not the monorepo root
-    parsedConfig.options.outDir = p.resolve(cwd, outDir)
-
-    const host = ts.createCompilerHost(parsedConfig.options)
-
-    // Custom transformers to modify the output path of declaration files
-    const customTransformers: ts.CustomTransformers = {
-      afterDeclarations: [
-        (context) => {
-          return (sourceFile) => {
-            if ('isDeclarationFile' in sourceFile) {
-              const originalFileName = sourceFile.fileName
-              const entryPointName = p.basename(originalFileName, '.ts')
-              const newFileName = p.join(parsedConfig.options.outDir || 'dist', `${entryPointName}.d.ts`)
-
-              return ts.factory.updateSourceFile(
-                sourceFile,
-                sourceFile.statements,
-                sourceFile.isDeclarationFile,
-                sourceFile.referencedFiles,
-                sourceFile.typeReferenceDirectives,
-                sourceFile.hasNoDefaultLib,
-                [{ fileName: newFileName, pos: 0, end: 0 }],
-              )
-            }
-            return sourceFile
-          }
-        },
-      ],
-    }
+    // console.log('Debug:', {
+    //   cwd,
+    //   rootDir,
+    //   outDir,
+    //   entryPoints: Array.isArray(entryPoints) ? entryPoints : [entryPoints],
+    // })
 
     const program = ts.createProgram({
       rootNames: Array.isArray(entryPoints) ? entryPoints : [entryPoints],
-      options: parsedConfig.options,
+      options: compilerOptions,
       host,
     })
 
-    program.emit(
-      undefined,
-      (fileName, data) => {
-        if (fileName.endsWith('.d.ts')) {
-          const outputPath = p.join(parsedConfig.options.outDir || 'dist', p.relative(rootDir, fileName))
-          try {
-            ts.sys.writeFile(outputPath, data)
-            // console.log('Successfully wrote file:', outputPath)
-          } catch (error) {
-            console.error('Error writing file:', outputPath, error)
-          }
+    const emitResult = program.emit(undefined, (fileName, data) => {
+      if (fileName.endsWith('.d.ts') || fileName.endsWith('.d.ts.map')) {
+        const outputPath = p.join(outDir, p.relative(rootDir, fileName))
+        const dir = p.dirname(outputPath)
+        if (!fs.existsSync(dir)) {
+          fs.mkdirSync(dir, { recursive: true })
         }
-      },
-      undefined,
-      true, // Only emit declarations
-      customTransformers,
-    )
+        fs.writeFileSync(outputPath, data)
+        // console.log(`Generated: ${outputPath}`)
+      }
+    })
+
+    const allDiagnostics = ts.getPreEmitDiagnostics(program).concat(emitResult.diagnostics)
+
+    if (allDiagnostics.length) {
+      const formatHost: ts.FormatDiagnosticsHost = {
+        getCanonicalFileName: (path) => path,
+        getCurrentDirectory: ts.sys.getCurrentDirectory,
+        getNewLine: () => ts.sys.newLine,
+      }
+      const message = ts.formatDiagnosticsWithColorAndContext(allDiagnostics, formatHost)
+      console.error(message)
+    }
+
+    if (emitResult.emitSkipped) {
+      throw new Error('TypeScript compilation failed')
+    }
   } catch (error) {
     console.error('Error generating types:', error)
     throw error

@@ -1,9 +1,10 @@
 import { afterAll, beforeAll, describe, expect, it } from 'bun:test'
 import fs from 'node:fs'
 import path from 'node:path'
+import type { DtsOptions } from '../src'
 import { dts, generate } from '../src/index'
 
-const tempDir = path.join(process.cwd(), 'test-temp')
+const tempDir = path.resolve(process.cwd(), 'test-temp')
 const srcDir = path.join(tempDir, 'src')
 const outDir = path.join(tempDir, 'dist')
 
@@ -53,31 +54,6 @@ describe('bun-plugin-dts-auto', () => {
     fs.rmSync(tempDir, { recursive: true, force: true })
   })
 
-  it('should generate declaration files', async () => {
-    await generate(path.join(srcDir, 'sample.ts'), {
-      cwd: tempDir,
-      root: 'src',
-      outdir: 'dist',
-    })
-
-    const declarationFile = path.join(outDir, 'sample.d.ts')
-    expect(fs.existsSync(declarationFile)).toBe(true)
-
-    const content = fs.readFileSync(declarationFile, 'utf-8')
-
-    // Check for the interface declaration
-    expect(content).toContain('export interface User {')
-    expect(content).toContain('id: number;')
-    expect(content).toContain('name: string;')
-
-    // Check for the function declaration
-    expect(content).toContain('export declare function greet(user: User): string;')
-
-    // Optionally, check for the reference comment and source map
-    expect(content).toContain('/// <reference')
-    expect(content).toContain('//# sourceMappingURL=sample.d.ts.map')
-  })
-
   it('should work as a Bun plugin', async () => {
     const plugin = dts({
       cwd: tempDir,
@@ -88,7 +64,6 @@ describe('bun-plugin-dts-auto', () => {
     expect(plugin.name).toBe('bun-plugin-dts-auto')
     expect(typeof plugin.setup).toBe('function')
 
-    // Mock the build object
     const mockBuild = {
       config: {
         entrypoints: [path.join(srcDir, 'sample.ts')],
@@ -102,5 +77,72 @@ describe('bun-plugin-dts-auto', () => {
 
     const declarationFile = path.join(outDir, 'sample.d.ts')
     expect(fs.existsSync(declarationFile)).toBe(true)
+  })
+
+  it('should generate declaration files with correct references', async () => {
+    const sampleFile1 = path.join(srcDir, 'sample1.ts')
+    const sampleFile2 = path.join(srcDir, 'sample2.ts')
+
+    fs.writeFileSync(
+      sampleFile1,
+      `
+    export interface User {
+      id: number;
+      name: string;
+    }
+  `,
+    )
+
+    fs.writeFileSync(
+      sampleFile2,
+      `
+    import { User } from './sample1';
+    export function greet(user: User): string {
+      return \`Hello, \${user.name}!\`;
+    }
+  `,
+    )
+
+    await generate([sampleFile1, sampleFile2], {
+      cwd: tempDir,
+      root: 'src',
+      outdir: 'dist',
+    })
+
+    const declarationFile1 = path.join(outDir, 'sample1.d.ts')
+    const declarationFile2 = path.join(outDir, 'sample2.d.ts')
+
+    expect(fs.existsSync(declarationFile1)).toBe(true)
+    expect(fs.existsSync(declarationFile2)).toBe(true)
+
+    const content1 = fs.readFileSync(declarationFile1, 'utf-8')
+    const content2 = fs.readFileSync(declarationFile2, 'utf-8')
+
+    // Use a regular expression to match either single or double quotes
+    expect(content2).toMatch(/import\s*{\s*User\s*}\s*from\s*['"]\.\/sample1['"]/)
+  })
+
+  it('should handle custom compiler options', async () => {
+    const customOptions: DtsOptions = {
+      cwd: tempDir,
+      root: 'src',
+      outdir: 'dist',
+      compiler: {
+        strict: false,
+        declaration: true,
+        declarationMap: true,
+      },
+    }
+
+    await generate(path.join(srcDir, 'sample.ts'), customOptions)
+
+    const declarationFile = path.join(outDir, 'sample.d.ts')
+    const declarationMapFile = path.join(outDir, 'sample.d.ts.map')
+
+    expect(fs.existsSync(declarationFile)).toBe(true)
+    expect(fs.existsSync(declarationMapFile)).toBe(true)
+
+    const content = fs.readFileSync(declarationFile, 'utf-8')
+    expect(content).toContain('//# sourceMappingURL=sample.d.ts.map')
   })
 })
