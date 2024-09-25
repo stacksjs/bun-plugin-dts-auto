@@ -1,4 +1,20 @@
 
+## v0.14.1...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.14.1...main)
+
+### 🚀 Enhancements
+
+- Add proper monorepo support ([3ca01df](https://github.com/stacksjs/bun-plugin-dts-auto/commit/3ca01df))
+
+### 🏡 Chore
+
+- Add changelog ([c6e4274](https://github.com/stacksjs/bun-plugin-dts-auto/commit/c6e4274))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.14.0...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.14.0...main)
