@@ -69,11 +69,14 @@ export interface DtsOptions {
  */
 export async function generate(entryPoints: string | string[], options?: DtsOptions): Promise<void> {
   const cwd = options?.cwd ?? process.cwd()
-  const configPath = options?.tsconfigPath ?? p.resolve(cwd, 'tsconfig.json')
-  const root = (options?.root ?? 'src').replace(/^\.\//, '')
+  const configPath = options?.tsconfigPath ? p.resolve(cwd, options.tsconfigPath) : p.resolve(cwd, 'tsconfig.json')
+  const root = p.resolve(cwd, (options?.root ?? 'src').replace(/^\.\//, ''))
+  const outDir = p.resolve(cwd, options?.outdir ?? './dist')
 
-  console.log('TSConfig path:', configPath)
-  console.log('Root directory:', root)
+  // console.log('TSConfig path:', configPath)
+  // console.log('Root directory:', root)
+  // console.log('Output directory:', outDir)
+  // console.log('Entry points:', entryPoints)
 
   try {
     const configFile = ts.readConfigFile(configPath, ts.sys.readFile)
@@ -90,32 +93,42 @@ export async function generate(entryPoints: string | string[], options?: DtsOpti
     const compilerOptions: ts.CompilerOptions = {
       ...parsedCommandLine.options,
       ...options?.compiler,
+      rootDir: root,
+      outDir,
       declaration: true,
       emitDeclarationOnly: true,
       noEmit: false,
-      outDir: options?.outdir ?? './dist',
-      rootDir: p.resolve(cwd, root),
+      skipLibCheck: true,
+      isolatedModules: true,
     }
 
-    console.log('Compiler Options:', JSON.stringify(compilerOptions, null, 2))
+    // console.log('Compiler Options:', JSON.stringify(compilerOptions, null, 2))
 
     const host = ts.createCompilerHost(compilerOptions)
 
-    const program = ts.createProgram({
-      rootNames: parsedCommandLine.fileNames.filter((file) => file.startsWith(compilerOptions.rootDir ?? 'src')),
-      options: compilerOptions,
-      host,
-    })
+    // Ensure entryPoints is an array and resolve to absolute paths
+    const entryPointsArray = (Array.isArray(entryPoints) ? entryPoints : [entryPoints]).map((entry) =>
+      p.resolve(cwd, entry),
+    )
+
+    // Use only the entry points that are within the root directory
+    const validEntryPoints = entryPointsArray.filter((entry) => entry.startsWith(root))
+
+    if (validEntryPoints.length === 0) {
+      throw new Error('No valid entry points found within the specified root directory')
+    }
+
+    const program = ts.createProgram(validEntryPoints, compilerOptions, host)
 
     const emitResult = program.emit(undefined, (fileName, data) => {
       if (fileName.endsWith('.d.ts') || fileName.endsWith('.d.ts.map')) {
-        const outputPath = p.join(compilerOptions.outDir ?? './dist', p.relative(p.resolve(cwd, root), fileName))
+        const outputPath = p.join(outDir, p.relative(root, fileName))
         const dir = p.dirname(outputPath)
         if (!fs.existsSync(dir)) {
           fs.mkdirSync(dir, { recursive: true })
         }
         fs.writeFileSync(outputPath, data)
-        console.log('Emitted:', outputPath)
+        // console.log('Emitted:', outputPath)
       }
     })
 
@@ -154,11 +167,14 @@ export function dts(options?: DtsOptions): BunPlugin {
 
       await generate(entrypoints, {
         root,
-        include: entrypoints,
+        include: entrypoints, // Use only the entrypoints from build.ts
         cwd: options?.cwd || process.cwd(),
         tsconfigPath: options?.tsconfigPath,
         outdir: options?.outdir || build.config.outdir,
-        ...options,
+        compiler: {
+          ...options?.compiler,
+          paths: undefined, // Remove the paths option to avoid generating extra dts files
+        },
       })
     },
   }
