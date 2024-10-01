@@ -8,14 +8,13 @@
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 <!-- [![Codecov][codecov-src]][codecov-href] -->
 
-This Bun plugin generates dts files for your TypeScript project.
+This Bun plugin generates dts files for your TypeScript projects.
 
 ## Features
 
-- Automatic dts generation based on your entrypoints
-- Honors & inherits your `tsconfig.json` settings
+- Automatic & fast dts generation
+- Powered by oxc-transform & isolatedDeclarations
 - Monorepo support
-- Dependency-free _(aside from TS & Bun)_
 
 ## Usage
 
@@ -39,18 +38,15 @@ await Bun.build({
 
   plugins: [
     dts({
-      cwd: import.meta.dir, // optional
-      rootDir: `${import.meta.dir}/src`, // optional
-      outdir: 'dist/types', // optional
+      cwd: process.cwd(), // optional
+      root: `./src`, // optional, default: './src'
+      outdir: './dist/types', // optional, default: './dist'
     }),
   ],
 })
 
 console.log('Build complete ✅')
 ```
-
-> [!NOTE]
-> Please note, this plugin honors your `tsconfig.json` `compilerOptions.outDir` setting. If you want to override this, you can do so by setting the `outdir`, `rootDir`, and `cwd` option in the build object.
 
 ## Testing
 
@@ -93,6 +89,7 @@ We would like to extend our thanks to the following sponsors for funding Stacks 
 
 Many thanks to the following core technologies & people who have contributed to this package:
 
+- [Oxc](https://oxc.rs/)
 - [Chris Breuer](https://github.com/chrisbbreuer)
 - [All Contributors](../../contributors)
 
