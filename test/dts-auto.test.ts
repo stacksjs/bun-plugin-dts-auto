@@ -1,7 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from 'bun:test'
 import fs from 'node:fs'
 import path from 'node:path'
-import type { DtsOptions } from '../src'
+import type { OnLoadResult, PluginBuilder } from 'bun'
 import { dts, generate } from '../src/index'
 
 const tempDir = path.resolve(process.cwd(), 'test-temp')
@@ -117,11 +117,17 @@ describe('bun-plugin-dts-auto', () => {
     expect(plugin.name).toBe('bun-plugin-dts-auto')
     expect(typeof plugin.setup).toBe('function')
 
-    const mockBuild = {
+    const mockBuild: PluginBuilder = {
       config: {
-        entrypoints: [path.relative(tempDir, path.join(srcDir, 'sample.ts'))],
-        root: path.relative(tempDir, srcDir),
-        outdir: path.relative(tempDir, outDir),
+        entrypoints: ['path/to/entry'],
+        root: 'path/to/root',
+        outdir: 'path/to/outdir',
+        plugins: [plugin],
+      },
+      onLoad: () => {},
+      onResolve: () => {},
+      module: (specifier: string, callback: () => OnLoadResult | Promise<OnLoadResult>) => {
+        callback()
       },
     }
 
