@@ -21,6 +21,7 @@
     "types",
     "auto",
     "bun",
+    "plugin",
     "package"
   ],
   "exports": {
