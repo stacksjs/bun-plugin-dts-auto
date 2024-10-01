@@ -1,4 +1,20 @@
 
+## v0.16.0...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.16.0...main)
+
+### 🚀 Enhancements
+
+- Use oxc to generate dts ([9ae7af1](https://github.com/stacksjs/bun-plugin-dts-auto/commit/9ae7af1))
+
+### 🩹 Fixes
+
+- Typecheck ([2a84772](https://github.com/stacksjs/bun-plugin-dts-auto/commit/2a84772))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.15.4...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.15.4...main)
