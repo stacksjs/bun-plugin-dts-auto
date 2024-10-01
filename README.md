@@ -26,16 +26,15 @@ You may now use the plugin:
 
 ```ts
 import dts from 'bun-plugin-dts-auto'
+// if you prefer named imports
+// import { dts } from 'bun-plugin-dts-auto'
 
 await Bun.build({
-  root: './src', // optional
-
+  root: './src',
   entrypoints: [
     'src/index.ts',
   ],
-
   outdir: './dist',
-
   plugins: [
     dts({
       cwd: process.cwd(), // optional
