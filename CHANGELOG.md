@@ -1,4 +1,16 @@
 
+## v0.18.12...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.12...main)
+
+### 🏡 Chore
+
+- Use bun's env ([5849888](https://github.com/stacksjs/bun-plugin-dts-auto/commit/5849888))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.11...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.11...main)
