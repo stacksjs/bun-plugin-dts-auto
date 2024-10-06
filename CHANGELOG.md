@@ -1,4 +1,16 @@
 
+## v0.18.5...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.5...main)
+
+### 🏡 Chore
+
+- Test legacy again ([5041329](https://github.com/stacksjs/bun-plugin-dts-auto/commit/5041329))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.4...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.4...main)
