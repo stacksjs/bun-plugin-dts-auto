@@ -40,7 +40,7 @@ jobs:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
 
       - name: Publish to npm
-        run: bun publish --access public --auth-type web
+        run: bun publish --access public --auth-type legacy
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
