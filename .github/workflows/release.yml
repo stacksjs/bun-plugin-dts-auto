@@ -32,7 +32,7 @@ jobs:
         run: bun install
 
       - name: Publish to npm
-        run: bunx npm login && bun publish --access public --auth-type web
+        run: bunx npm login && bun publish --access public --auth-type legacy
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
