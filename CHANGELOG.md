@@ -1,4 +1,16 @@
 
+## v0.18.17...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.17...main)
+
+### 🏡 Chore
+
+- Comment env ([3cb6aa2](https://github.com/stacksjs/bun-plugin-dts-auto/commit/3cb6aa2))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.16...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.16...main)
