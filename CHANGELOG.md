@@ -1,4 +1,16 @@
 
+## v0.18.18...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.18...main)
+
+### 🏡 Chore
+
+- Add `BUN_AUTH_TOKEN` ([0175952](https://github.com/stacksjs/bun-plugin-dts-auto/commit/0175952))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.17...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.17...main)
