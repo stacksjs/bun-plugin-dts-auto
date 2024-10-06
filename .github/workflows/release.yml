@@ -32,9 +32,9 @@ jobs:
         run: bun install
 
       - name: Publish to npm
-        run: bunx npm login && bun publish --access public --auth-type legacy
+        run: bun publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          BUN_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
       - name: Create GitHub release
         run: bunx changelogithub
