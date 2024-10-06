@@ -1,4 +1,16 @@
 
+## v0.18.16...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.16...main)
+
+### 🏡 Chore
+
+- Default to npmjs registry ([6702a47](https://github.com/stacksjs/bun-plugin-dts-auto/commit/6702a47))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.15...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.15...main)
