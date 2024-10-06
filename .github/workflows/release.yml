@@ -21,7 +21,6 @@ jobs:
           BUN_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         with:
           bun-version: canary
-          registry-url: https://registry.npmjs.org
 
       - name: Use cached node_modules
         uses: actions/cache@v4
