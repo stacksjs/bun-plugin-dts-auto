@@ -1,4 +1,4 @@
-![Social Card of Bun Plugin DTS Auto](https://github.com/stacksjs/stacks/blob/main/.github/art/cover.jpg)
+![Social Card of Bun Plugin DTS Auto](https://github.com/stacksjs/bun-plugin-dts-auto/blob/main/.github/art/cover.jpg)
 
 # bun-plugin-dts-auto
 
