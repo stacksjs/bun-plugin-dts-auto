@@ -1,4 +1,16 @@
 
+## v0.18.7...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.7...main)
+
+### 🏡 Chore
+
+- Test web once more ([b16853b](https://github.com/stacksjs/bun-plugin-dts-auto/commit/b16853b))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.6...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.6...main)
