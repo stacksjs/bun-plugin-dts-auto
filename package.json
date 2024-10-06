@@ -1,7 +1,7 @@
 {
   "name": "bun-plugin-dts-auto",
   "type": "module",
-  "version": "0.18.2",
+  "version": "0.18.3",
   "description": "A Bun Bundler plugin that auto generates your d.ts types.",
   "author": "Chris Breuer <chris@ow3.org>",
   "license": "MIT",

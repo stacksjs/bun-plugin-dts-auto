@@ -1,4 +1,16 @@
 
+## v0.18.2...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.2...main)
+
+### 🏡 Chore
+
+- Add auth-type legacy ([b6235d2](https://github.com/stacksjs/bun-plugin-dts-auto/commit/b6235d2))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.1...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.1...main)
