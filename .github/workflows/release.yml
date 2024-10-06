@@ -17,8 +17,8 @@ jobs:
 
       - name: Install Bun
         uses: oven-sh/setup-bun@v2
-        env:
-          BUN_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        # env:
+        #   BUN_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         with:
           bun-version: canary
 
