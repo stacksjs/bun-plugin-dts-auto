@@ -1,4 +1,16 @@
 
+## v0.18.19...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.19...main)
+
+### 🏡 Chore
+
+- Do not include sourcemap ([dacb562](https://github.com/stacksjs/bun-plugin-dts-auto/commit/dacb562))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.18...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.18...main)
