@@ -35,6 +35,8 @@ jobs:
 
       - name: Publish to npm
         run: bun publish --access public
+        env:
+          BUN_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
       - name: Create GitHub release
         run: bunx changelogithub
