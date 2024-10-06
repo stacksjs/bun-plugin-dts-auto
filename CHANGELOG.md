@@ -1,4 +1,16 @@
 
+## v0.18.11...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.11...main)
+
+### 🩹 Fixes
+
+- Rename to `BUN_AUTH_TOKEN` ([0aefd83](https://github.com/stacksjs/bun-plugin-dts-auto/commit/0aefd83))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.10...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.10...main)
