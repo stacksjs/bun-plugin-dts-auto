@@ -1,4 +1,16 @@
 
+## v0.18.15...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.15...main)
+
+### 🏡 Chore
+
+- Reenable bunfig ([b6ae9d5](https://github.com/stacksjs/bun-plugin-dts-auto/commit/b6ae9d5))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.14...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.14...main)
