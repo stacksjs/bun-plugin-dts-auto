@@ -1,4 +1,16 @@
 
+## v0.18.0...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.0...main)
+
+### 🏡 Chore
+
+- Use canary bun version ([76b9240](https://github.com/stacksjs/bun-plugin-dts-auto/commit/76b9240))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.17.0...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.17.0...main)
