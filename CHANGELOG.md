@@ -1,4 +1,16 @@
 
+## v0.18.4...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.4...main)
+
+### 🏡 Chore
+
+- Test npm login ([9bcdf4b](https://github.com/stacksjs/bun-plugin-dts-auto/commit/9bcdf4b))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.3...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.3...main)
