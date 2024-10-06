@@ -18,7 +18,7 @@ jobs:
       - name: Install Bun
         uses: oven-sh/setup-bun@v2
         with:
-          version: canary
+          bun-version: canary
 
       - name: Use cached node_modules
         uses: actions/cache@v4
