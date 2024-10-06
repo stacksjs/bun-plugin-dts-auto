@@ -1,4 +1,20 @@
 
+## v0.17.0...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.17.0...main)
+
+### 🏡 Chore
+
+- Add plugin keyword ([ac644c9](https://github.com/stacksjs/bun-plugin-dts-auto/commit/ac644c9))
+- Add named import reference ([8ee0416](https://github.com/stacksjs/bun-plugin-dts-auto/commit/8ee0416))
+- Remove bun imports ([e149137](https://github.com/stacksjs/bun-plugin-dts-auto/commit/e149137))
+- Enable sourcemap and minify ([1bf3732](https://github.com/stacksjs/bun-plugin-dts-auto/commit/1bf3732))
+- Use bun publish ([97435f4](https://github.com/stacksjs/bun-plugin-dts-auto/commit/97435f4))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.16.0...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.16.0...main)
