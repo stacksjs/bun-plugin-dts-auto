@@ -1,4 +1,16 @@
 
+## v0.18.3...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.3...main)
+
+### 🏡 Chore
+
+- Test web auth-type ([6f5862f](https://github.com/stacksjs/bun-plugin-dts-auto/commit/6f5862f))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.2...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.2...main)
