@@ -1,4 +1,16 @@
 
+## v0.18.6...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.6...main)
+
+### 🏡 Chore
+
+- Use one step ([bc8cbc7](https://github.com/stacksjs/bun-plugin-dts-auto/commit/bc8cbc7))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.5...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.5...main)
