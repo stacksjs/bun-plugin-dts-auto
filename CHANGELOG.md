@@ -1,4 +1,17 @@
 
+## v0.18.8...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.8...main)
+
+### 🏡 Chore
+
+- Adjust url for remote display ([3e71dd6](https://github.com/stacksjs/bun-plugin-dts-auto/commit/3e71dd6))
+- Add bunfig ([783c0a6](https://github.com/stacksjs/bun-plugin-dts-auto/commit/783c0a6))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.7...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.7...main)
