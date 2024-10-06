@@ -1,4 +1,16 @@
 
+## v0.18.14...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.14...main)
+
+### 🏡 Chore
+
+- Use registry-url ([8c4ba4a](https://github.com/stacksjs/bun-plugin-dts-auto/commit/8c4ba4a))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.13...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.13...main)
