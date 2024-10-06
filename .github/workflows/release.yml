@@ -34,13 +34,8 @@ jobs:
       - name: Build the release
         run: bun run build
 
-      - name: Login
-        run: bunx npm login
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-
       - name: Publish to npm
-        run: bun publish --access public --auth-type legacy
+        run: bunx npm login && bun publish --access public --auth-type legacy
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
