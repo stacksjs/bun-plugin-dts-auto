@@ -1,4 +1,16 @@
 
+## v0.20.0...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.20.0...main)
+
+### 🏡 Chore
+
+- Ensure `oxc-transform` is a dep ([844add6](https://github.com/stacksjs/bun-plugin-dts-auto/commit/844add6))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.19.1...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.19.1...main)
