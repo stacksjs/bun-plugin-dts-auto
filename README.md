@@ -38,14 +38,24 @@ await Bun.build({
   plugins: [
     dts({
       cwd: process.cwd(), // optional
-      root: `./src`, // optional, default: './src'
+      root: './src', // optional, default: 'src'
       outdir: './dist/types', // optional, default: './dist'
+      files: ['src/index.ts'], // optional, if not specified, all .ts files in root will be processed
     }),
   ],
 })
 
 console.log('Build complete ✅')
 ```
+
+## API
+
+The `dts` plugin accepts an options object with the following properties:
+
+- `cwd`: The current working directory _(optional, default: `process.cwd()`)_
+- `root`: The root directory of your TypeScript files _(optional, default: `'src'`)_
+- `outdir`: The output directory for generated declaration files _(optional, default: `'./dist'`)_
+- `files`: An array of file paths or a single file path to process _(optional, if not specified, all `.ts` files in the root directory will be processed)_
 
 ## Testing
 
