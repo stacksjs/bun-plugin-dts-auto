@@ -4,7 +4,7 @@ import type { BunPlugin } from 'bun'
 import { isolatedDeclaration } from 'oxc-transform'
 import type { DtsOptions } from './types'
 
-export async function generate(entryPoints: string | string[], options?: DtsOptions): Promise<void> {
+export async function generate(options?: DtsOptions): Promise<void> {
   const cwd = options?.cwd ?? process.cwd()
   const root = options?.root ?? 'src'
   const outdir = options?.outdir ?? './dist/'
@@ -45,12 +45,12 @@ export function dts(options?: DtsOptions): BunPlugin {
     name: 'bun-plugin-dts-auto',
 
     async setup(build) {
-      const entrypoints = [...build.config.entrypoints].sort()
+      // const entrypoints = [...build.config.entrypoints].sort()
       const root = options?.root ?? build.config.root ?? './src/'
       const outdir = options?.outdir ?? './dist/'
       const cwd = options?.cwd ?? process.cwd()
 
-      await generate(entrypoints, {
+      await generate({
         ...options,
         root,
         outdir,

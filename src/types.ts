@@ -3,4 +3,5 @@ export interface DtsOptions {
   root?: string
   outdir?: string
   // sourcemap?: boolean
+  // entryPoints?: string | string[],
 }

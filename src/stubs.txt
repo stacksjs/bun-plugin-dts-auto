@@ -4,7 +4,7 @@ function requireNative() {
   if (process.platform === 'android') {
     if (process.arch === 'arm64') {
       try {
-        return import.meta.require('../node_modules/@oxc-transform/binding-android-arm64/transform.android-arm64.node')
+        return import.meta.require('../../@oxc-transform/binding-android-arm64/transform.android-arm64.node')
       } catch (e) {
         loadErrors.push(e)
       }
@@ -16,7 +16,7 @@ function requireNative() {
     } else if (process.arch === 'arm') {
       try {
         return import.meta.require(
-          '../node_modules/@oxc-transform/binding-android-arm-eabi/transform.android-arm-eabi.node',
+          '../../@oxc-transform/binding-android-arm-eabi/transform.android-arm-eabi.node',
         )
       } catch (e) {
         loadErrors.push(e)
@@ -33,7 +33,7 @@ function requireNative() {
     if (process.arch === 'x64') {
       try {
         return import.meta.require(
-          '../node_modules/@oxc-transform/binding-win32-x64-msvc/transform.win32-x64-msvc.node',
+          '../../@oxc-transform/binding-win32-x64-msvc/transform.win32-x64-msvc.node',
         )
       } catch (e) {
         loadErrors.push(e)
@@ -46,7 +46,7 @@ function requireNative() {
     } else if (process.arch === 'ia32') {
       try {
         return import.meta.require(
-          '../node_modules/@oxc-transform/binding-win32-ia32-msvc/transform.win32-ia32-msvc.node',
+          '../../@oxc-transform/binding-win32-ia32-msvc/transform.win32-ia32-msvc.node',
         )
       } catch (e) {
         loadErrors.push(e)
@@ -59,7 +59,7 @@ function requireNative() {
     } else if (process.arch === 'arm64') {
       try {
         return import.meta.require(
-          '../node_modules/@oxc-transform/binding-win32-arm64-msvc/transform.win32-arm64-msvc.node',
+          '../../@oxc-transform/binding-win32-arm64-msvc/transform.win32-arm64-msvc.node',
         )
       } catch (e) {
         loadErrors.push(e)
@@ -75,7 +75,7 @@ function requireNative() {
   } else if (process.platform === 'darwin') {
     try {
       return import.meta.require(
-        '../node_modules/@oxc-transform/binding-darwin-universal/transform.darwin-universal.node',
+        '../../@oxc-transform/binding-darwin-universal/transform.darwin-universal.node',
       )
     } catch (e) {
       loadErrors.push(e)
@@ -89,7 +89,7 @@ function requireNative() {
 
     if (process.arch === 'x64') {
       try {
-        return import.meta.require('../node_modules/@oxc-transform/binding-darwin-x64/transform.darwin-x64.node')
+        return import.meta.require('../../@oxc-transform/binding-darwin-x64/transform.darwin-x64.node')
       } catch (e) {
         loadErrors.push(e)
       }
@@ -101,14 +101,16 @@ function requireNative() {
       }
     } else if (process.arch === 'arm64') {
       try {
-        return import.meta.require('../node_modules/@oxc-transform/binding-darwin-arm64/transform.darwin-arm64.node')
+        return import.meta.require('../../@oxc-transform/binding-darwin-arm64/transform.darwin-arm64.node')
       } catch (e) {
         loadErrors.push(e)
       }
 
       try {
+        console.log('import.meta.require darwinarm64')
         return import.meta.require('@oxc-transform/binding-darwin-arm64')
       } catch (e) {
+        console.log('import.meta.require darwinarm64 error', e)
         loadErrors.push(e)
       }
     } else {
@@ -117,7 +119,7 @@ function requireNative() {
   } else if (process.platform === 'freebsd') {
     if (process.arch === 'x64') {
       try {
-        return import.meta.require('../node_modules/@oxc-transform/binding-freebsd-x64/transform.freebsd-x64.node')
+        return import.meta.require('../../@oxc-transform/binding-freebsd-x64/transform.freebsd-x64.node')
       } catch (e) {
         loadErrors.push(e)
       }
@@ -129,7 +131,7 @@ function requireNative() {
       }
     } else if (process.arch === 'arm64') {
       try {
-        return import.meta.require('../node_modules/@oxc-transform/binding-freebsd-arm64/transform.freebsd-arm64.node')
+        return import.meta.require('../../@oxc-transform/binding-freebsd-arm64/transform.freebsd-arm64.node')
       } catch (e) {
         loadErrors.push(e)
       }
@@ -147,7 +149,7 @@ function requireNative() {
       if (isMusl()) {
         try {
           return import.meta.require(
-            '../node_modules/@oxc-transform/binding-linux-x64-musl/transform.linux-x64-musl.node',
+            '../../@oxc-transform/binding-linux-x64-musl/transform.linux-x64-musl.node',
           )
         } catch (e) {
           loadErrors.push(e)
@@ -161,7 +163,7 @@ function requireNative() {
       } else {
         try {
           return import.meta.require(
-            '../node_modules/@oxc-transform/binding-linux-x64-gnu/transform.linux-x64-gnu.node',
+            '../../@oxc-transform/binding-linux-x64-gnu/transform.linux-x64-gnu.node',
           )
         } catch (e) {
           loadErrors.push(e)
@@ -177,7 +179,7 @@ function requireNative() {
       if (isMusl()) {
         try {
           return import.meta.require(
-            '../node_modules/@oxc-transform/binding-linux-arm64-musl/transform.linux-arm64-musl.node',
+            '../../@oxc-transform/binding-linux-arm64-musl/transform.linux-arm64-musl.node',
           )
         } catch (e) {
           loadErrors.push(e)
@@ -191,7 +193,7 @@ function requireNative() {
       } else {
         try {
           return import.meta.require(
-            '../node_modules/@oxc-transform/binding-linux-arm64-gnu/transform.linux-arm64-gnu.node',
+            '../../@oxc-transform/binding-linux-arm64-gnu/transform.linux-arm64-gnu.node',
           )
         } catch (e) {
           loadErrors.push(e)
@@ -207,7 +209,7 @@ function requireNative() {
       if (isMusl()) {
         try {
           return import.meta.require(
-            '../node_modules/@oxc-transform/binding-linux-arm-musleabihf/transform.linux-arm-musleabihf.node',
+            '../../@oxc-transform/binding-linux-arm-musleabihf/transform.linux-arm-musleabihf.node',
           )
         } catch (e) {
           loadErrors.push(e)
@@ -221,7 +223,7 @@ function requireNative() {
       } else {
         try {
           return import.meta.require(
-            '../node_modules/@oxc-transform/binding-linux-arm-gnueabihf/transform.linux-arm-gnueabihf.node',
+            '../../@oxc-transform/binding-linux-arm-gnueabihf/transform.linux-arm-gnueabihf.node',
           )
         } catch (e) {
           loadErrors.push(e)
@@ -237,7 +239,7 @@ function requireNative() {
       if (isMusl()) {
         try {
           return import.meta.require(
-            '../node_modules/@oxc-transform/binding-linux-riscv64-musl/transform.linux-riscv64-musl.node',
+            '../../@oxc-transform/binding-linux-riscv64-musl/transform.linux-riscv64-musl.node',
           )
         } catch (e) {
           loadErrors.push(e)
@@ -251,7 +253,7 @@ function requireNative() {
       } else {
         try {
           return import.meta.require(
-            '../node_modules/@oxc-transform/binding-linux-riscv64-gnu/transform.linux-riscv64-gnu.node',
+            '../../@oxc-transform/binding-linux-riscv64-gnu/transform.linux-riscv64-gnu.node',
           )
         } catch (e) {
           loadErrors.push(e)
@@ -266,7 +268,7 @@ function requireNative() {
     } else if (process.arch === 'ppc64') {
       try {
         return import.meta.require(
-          '../node_modules/@oxc-transform/binding-linux-ppc64-gnu/transform.linux-ppc64-gnu.node',
+          '../../@oxc-transform/binding-linux-ppc64-gnu/transform.linux-ppc64-gnu.node',
         )
       } catch (e) {
         loadErrors.push(e)
@@ -280,7 +282,7 @@ function requireNative() {
     } else if (process.arch === 's390x') {
       try {
         return import.meta.require(
-          '../node_modules/@oxc-transform/binding-linux-s390x-gnu/transform.linux-s390x-gnu.node',
+          '../../@oxc-transform/binding-linux-s390x-gnu/transform.linux-s390x-gnu.node',
         )
       } catch (e) {
         loadErrors.push(e)
@@ -297,4 +299,5 @@ function requireNative() {
   } else {
     loadErrors.push(new Error(`Unsupported OS: ${process.platform}, architecture: ${process.arch}`))
   }
+  console.log('end here')
 }

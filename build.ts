@@ -1,6 +1,7 @@
 import path from 'node:path'
 import process from 'node:process'
 import dts from './src/index'
+// import dts from './dist/index'
 
 console.log('Building...')
 
@@ -17,7 +18,6 @@ if (!result.success) {
   console.error('Build failed')
 
   for (const message of result.logs) {
-    // Bun will pretty print the message object
     console.error(message)
   }
 
@@ -28,7 +28,7 @@ if (!result.success) {
 // because the bundler will adjust the bindings based on who bundles
 
 // Copy requireNative() function from stubs.js to dist/index.js
-const stubsPath = path.join(process.cwd(), 'src', 'stubs.js')
+const stubsPath = path.join(process.cwd(), 'src', 'stubs.txt')
 const distIndexPath = path.join(process.cwd(), 'dist', 'index.js')
 
 const stubsContent = await Bun.file(stubsPath).text()
