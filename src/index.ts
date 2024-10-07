@@ -1,45 +1,30 @@
 import fs from 'node:fs'
-import p from 'node:path'
 import path from 'node:path'
 import type { BunPlugin } from 'bun'
 import { isolatedDeclaration } from 'oxc-transform'
-
-export interface DtsOptions {
-  cwd?: string
-  root?: string
-  outdir?: string
-  // sourcemap?: boolean
-}
+import type { DtsOptions } from './types'
 
 export async function generate(entryPoints: string | string[], options?: DtsOptions): Promise<void> {
-  // console.log('Generate function called with:')
-  // console.log('EntryPoints:', entryPoints)
-  // console.log('Options:', options)
-
-  const files = Array.isArray(entryPoints) ? entryPoints : [entryPoints]
   const cwd = options?.cwd ?? process.cwd()
   const root = options?.root ?? 'src'
   const outdir = options?.outdir ?? './dist/'
 
-  // console.log('Resolved options:')
-  // console.log('CWD:', cwd)
-  // console.log('Root:', root)
-  // console.log('Outdir:', outdir)
+  const glob = new Bun.Glob('**/*.ts')
+  const rootDir = path.join(cwd, root)
 
-  for (const file of files) {
-    const fullPath = path.join(cwd, file)
-    // console.log(`Processing file: ${fullPath}`)
+  for await (const file of glob.scan({ cwd: rootDir, absolute: true })) {
+    // console.log(`Processing file: ${file}`)
 
-    if (fs.existsSync(fullPath)) {
-      const ts = fs.readFileSync(fullPath, 'utf-8')
-      const dts = isolatedDeclaration(fullPath, ts, { sourcemap: false })
+    if (fs.existsSync(file)) {
+      const ts = fs.readFileSync(file, 'utf-8')
+      const dts = isolatedDeclaration(file, ts, { sourcemap: false })
       const code = dts.code
-      const relativePath = path.relative(path.join(cwd, root), fullPath)
+      const relativePath = path.relative(rootDir, file)
       const outputPath = path.join(cwd, outdir, relativePath.replace(/\.ts$/, '.d.ts'))
       // console.log(`Writing declaration file: ${outputPath}`)
       write(outputPath, code)
     } else {
-      console.warn(`File not found: ${fullPath}`)
+      console.warn(`File not found: ${file}`)
     }
   }
 }
@@ -61,7 +46,7 @@ export function dts(options?: DtsOptions): BunPlugin {
 
     async setup(build) {
       const entrypoints = [...build.config.entrypoints].sort()
-      const root = options?.root ?? build.config.root ?? 'src'
+      const root = options?.root ?? build.config.root ?? './src/'
       const outdir = options?.outdir ?? './dist/'
       const cwd = options?.cwd ?? process.cwd()
 
@@ -74,5 +59,7 @@ export function dts(options?: DtsOptions): BunPlugin {
     },
   }
 }
+
+export * from './types'
 
 export default dts

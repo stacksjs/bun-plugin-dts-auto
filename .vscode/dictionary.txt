@@ -1,4 +1,5 @@
 antfu
+biomejs
 booleanish
 bumpp
 bunx
@@ -11,14 +12,20 @@ composables
 degit
 deps
 destructurable
+eabi
 entrypoints
+gnueabihf
 heroicons
+libc
+msvc
+musleabihf
 openweb
 outdir
 pausable
 Postcardware
 prefetch
 preinstall
+riscv
 socio
 Solana
 stacksjs

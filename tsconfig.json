@@ -12,6 +12,7 @@
     "strict": true,
     "strictNullChecks": true,
     "declaration": true,
+    "isolatedDeclarations": true,
     "declarationMap": true,
     "noEmit": true,
     "outDir": "./dist",
