@@ -1,4 +1,16 @@
 
+## v0.19.1...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.19.1...main)
+
+### 🚀 Enhancements
+
+- Add `files` option ([9987588](https://github.com/stacksjs/bun-plugin-dts-auto/commit/9987588))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.19.0...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.19.0...main)
