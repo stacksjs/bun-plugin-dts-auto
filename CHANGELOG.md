@@ -1,4 +1,17 @@
 
+## v0.18.20...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.20...main)
+
+### 🏡 Chore
+
+- Adjust image url ([a759043](https://github.com/stacksjs/bun-plugin-dts-auto/commit/a759043))
+- Build dts files for everything in the root ([691cf1a](https://github.com/stacksjs/bun-plugin-dts-auto/commit/691cf1a))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.18.19...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.18.19...main)
