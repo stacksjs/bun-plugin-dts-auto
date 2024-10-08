@@ -58,23 +58,12 @@
     "@stacksjs/biome-config": "^0.1.5",
     "@types/bun": "^1.1.10",
     "bumpp": "^9.6.1",
-    "bun-plugin-dts-auto": "^0.20.2",
     "changelogen": "^0.5.7",
     "commitizen": "^4.3.1",
     "cz-git": "^1.10.1",
     "lint-staged": "^15.2.10",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.6.2"
-  },
-  "peerDependencies": {
-    "@oxc-transform/binding-win32-x64-msvc": "0.30.5",
-    "@oxc-transform/binding-win32-arm64-msvc": "0.30.5",
-    "@oxc-transform/binding-linux-x64-gnu": "0.30.5",
-    "@oxc-transform/binding-linux-arm64-gnu": "0.30.5",
-    "@oxc-transform/binding-linux-x64-musl": "0.30.5",
-    "@oxc-transform/binding-linux-arm64-musl": "0.30.5",
-    "@oxc-transform/binding-darwin-x64": "0.30.5",
-    "@oxc-transform/binding-darwin-arm64": "0.30.5"
   },
   "optionalDependencies": {
     "@oxc-transform/binding-win32-x64-msvc": "0.30.5",
