@@ -66,6 +66,16 @@
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.6.2"
   },
+  "peerDependencies": {
+    "@oxc-transform/binding-win32-x64-msvc": "0.30.5",
+    "@oxc-transform/binding-win32-arm64-msvc": "0.30.5",
+    "@oxc-transform/binding-linux-x64-gnu": "0.30.5",
+    "@oxc-transform/binding-linux-arm64-gnu": "0.30.5",
+    "@oxc-transform/binding-linux-x64-musl": "0.30.5",
+    "@oxc-transform/binding-linux-arm64-musl": "0.30.5",
+    "@oxc-transform/binding-darwin-x64": "0.30.5",
+    "@oxc-transform/binding-darwin-arm64": "0.30.5"
+  },
   "optionalDependencies": {
     "@oxc-transform/binding-win32-x64-msvc": "0.30.5",
     "@oxc-transform/binding-win32-arm64-msvc": "0.30.5",
