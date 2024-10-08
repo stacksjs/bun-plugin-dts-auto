@@ -1,4 +1,16 @@
 
+## v0.20.4...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.20.4...main)
+
+### 🏡 Chore
+
+- Test peer deps ([017439c](https://github.com/stacksjs/bun-plugin-dts-auto/commit/017439c))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.20.3...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.20.3...main)
