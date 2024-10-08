@@ -1,4 +1,16 @@
 
+## v0.20.2...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.20.2...main)
+
+### 🩹 Fixes
+
+- `requireTransformRegex` to delete for all bindings ([4ec974b](https://github.com/stacksjs/bun-plugin-dts-auto/commit/4ec974b))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.20.1...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.20.1...main)
