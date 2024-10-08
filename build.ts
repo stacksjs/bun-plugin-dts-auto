@@ -25,8 +25,8 @@ if (!result.success) {
   process.exit(1)
 }
 
-// need to replace requireNative() function with the one from the binding
-// because the bundler will adjust the bindings based on who bundles
+// need to replace requireNative() function with the one "unbuilt" one from src/stubs
+// because the bundler will only bundle the bindings based on machine that's running the build
 
 // Copy requireNative() function from stubs.js to dist/index.js
 const stubsPath = path.join(process.cwd(), 'src', 'stubs.txt')
