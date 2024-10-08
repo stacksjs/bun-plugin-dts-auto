@@ -1,4 +1,16 @@
 
+## v0.20.3...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.20.3...main)
+
+### 🏡 Chore
+
+- Adjust regexes some ([cd912cd](https://github.com/stacksjs/bun-plugin-dts-auto/commit/cd912cd))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.20.2...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.20.2...main)
