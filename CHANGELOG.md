@@ -1,4 +1,16 @@
 
+## v0.20.1...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.20.1...main)
+
+### 🏡 Chore
+
+- Optimize the build process ([99cdf76](https://github.com/stacksjs/bun-plugin-dts-auto/commit/99cdf76))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.20.0...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.20.0...main)
