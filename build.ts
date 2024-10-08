@@ -43,12 +43,12 @@ const stubsRequireNative = stubsContent.match(requireNativeRegex)?.[0]
 const distRequireNativeRegex = /function requireNative\(\) {[\s\S]*?^}/m
 distIndexContent = distIndexContent.replace(distRequireNativeRegex, stubsRequireNative as string)
 
-const requireTransformRegex =
-  /\/\/ node_modules\/@oxc-transform\/binding-[\s\S]*?var require_transform_[\s\S]*?\}\);\s*$/m
-distIndexContent = distIndexContent.replace(requireTransformRegex, '')
+// Remove transform-related code
+const transformRegex = /\/\/ node_modules\/@oxc-transform\/binding-[\s\S]*?^}\);/gm
+distIndexContent = distIndexContent.replace(transformRegex, '')
 
-// also delete var __commonJS =*
-const commonJsRegex = /var __commonJS =.*\n/
+// Remove __commonJS variable
+const commonJsRegex = /var __commonJS =[\s\S]*?;\s*$/m
 distIndexContent = distIndexContent.replace(commonJsRegex, '')
 
 // Write the modified content back to dist/index.js
