@@ -1,4 +1,17 @@
 
+## v0.20.5...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.20.5...main)
+
+### 🏡 Chore
+
+- Adjust comment ([5e8c5e0](https://github.com/stacksjs/bun-plugin-dts-auto/commit/5e8c5e0))
+- Remove peer deps ([a1737f3](https://github.com/stacksjs/bun-plugin-dts-auto/commit/a1737f3))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.20.4...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.20.4...main)
