@@ -1,7 +1,6 @@
-![Social Card of Bun Plugin DTS Auto](https://github.com/stacksjs/bun-plugin-dts-auto/blob/main/.github/art/cover.jpg)
-
 # bun-plugin-dts-auto
 
+![Social Card of Bun Plugin DTS Auto](https://github.com/stacksjs/bun-plugin-dts-auto/blob/main/.github/art/cover.jpg)
 [![npm version][npm-version-src]][npm-version-href]
 [![GitHub Actions][github-actions-src]][github-actions-href]
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)

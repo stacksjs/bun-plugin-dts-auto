@@ -1,3 +1,4 @@
+import { unlink } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
 import dts from './src/index'
@@ -42,9 +43,23 @@ const stubsRequireNative = stubsContent.match(requireNativeRegex)?.[0]
 const distRequireNativeRegex = /function requireNative\(\) {[\s\S]*?^}/m
 distIndexContent = distIndexContent.replace(distRequireNativeRegex, stubsRequireNative as string)
 
+const requireTransformRegex =
+  /\/\/ node_modules\/@oxc-transform\/binding-[\s\S]*?var require_transform_[\s\S]*?\}\);\s*$/m
+distIndexContent = distIndexContent.replace(requireTransformRegex, '')
+
+// also delete var __commonJS =*
+const commonJsRegex = /var __commonJS =.*\n/
+distIndexContent = distIndexContent.replace(commonJsRegex, '')
+
 // Write the modified content back to dist/index.js
 await Bun.write(distIndexPath, distIndexContent)
 console.log('Updated requireNative() function in dist/index.js')
+
+// delete the transform.* files in dist
+const transformFiles = new Bun.Glob('dist/transform.*')
+for await (const file of transformFiles.scan()) {
+  await unlink(file)
+}
 
 // eslint-disable-next-line no-console
 console.log('Build complete')
