@@ -50,30 +50,30 @@
     "typecheck": "bun tsc --noEmit"
   },
   "dependencies": {
-    "oxc-transform": "^0.30.5"
+    "oxc-transform": "^0.31.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.3",
     "@commitlint/cli": "^19.5.0",
     "@stacksjs/biome-config": "^0.1.5",
-    "@types/bun": "^1.1.10",
-    "bumpp": "^9.6.1",
+    "@types/bun": "^1.1.11",
+    "bumpp": "^9.7.1",
     "changelogen": "^0.5.7",
     "commitizen": "^4.3.1",
     "cz-git": "^1.10.1",
     "lint-staged": "^15.2.10",
     "simple-git-hooks": "^2.11.1",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.3"
   },
   "optionalDependencies": {
-    "@oxc-transform/binding-win32-x64-msvc": "0.30.5",
-    "@oxc-transform/binding-win32-arm64-msvc": "0.30.5",
-    "@oxc-transform/binding-linux-x64-gnu": "0.30.5",
-    "@oxc-transform/binding-linux-arm64-gnu": "0.30.5",
-    "@oxc-transform/binding-linux-x64-musl": "0.30.5",
-    "@oxc-transform/binding-linux-arm64-musl": "0.30.5",
-    "@oxc-transform/binding-darwin-x64": "0.30.5",
-    "@oxc-transform/binding-darwin-arm64": "0.30.5"
+    "@oxc-transform/binding-win32-x64-msvc": "0.31.0",
+    "@oxc-transform/binding-win32-arm64-msvc": "0.31.0",
+    "@oxc-transform/binding-linux-x64-gnu": "0.31.0",
+    "@oxc-transform/binding-linux-arm64-gnu": "0.31.0",
+    "@oxc-transform/binding-linux-x64-musl": "0.31.0",
+    "@oxc-transform/binding-linux-arm64-musl": "0.31.0",
+    "@oxc-transform/binding-darwin-x64": "0.31.0",
+    "@oxc-transform/binding-darwin-arm64": "0.31.0"
   },
   "simple-git-hooks": {
     "pre-commit": "bun lint-staged",
