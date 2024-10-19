@@ -7,7 +7,7 @@ export default {
   },
   prompt: {
     messages: {
-      type: "Select the type of change that you're committing:",
+      type: 'Select the type of change that you\'re committing:',
       scope: 'Select the SCOPE of this change (optional):',
       customScope: 'Select the SCOPE of this change:',
       subject: 'Write a SHORT, IMPERATIVE tense description of the change:\n',
@@ -40,7 +40,7 @@ export default {
         emoji: ':package:',
       },
       { value: 'ci', name: 'ci:       🎡  Changes to our CI configuration files and scripts', emoji: ':ferris_wheel:' },
-      { value: 'chore', name: "chore:    🔨  Other changes that don't modify src or test files", emoji: ':hammer:' },
+      { value: 'chore', name: 'chore:    🔨  Other changes that don\'t modify src or test files', emoji: ':hammer:' },
       { value: 'revert', name: 'revert:   ⏪️  Reverts a previous commit', emoji: ':rewind:' },
     ],
     useEmoji: false,

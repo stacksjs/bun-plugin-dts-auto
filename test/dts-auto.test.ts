@@ -1,7 +1,7 @@
+import type { OnLoadResult, PluginBuilder } from 'bun'
 import { afterAll, beforeAll, describe, expect, it } from 'bun:test'
 import fs from 'node:fs'
 import path from 'node:path'
-import type { OnLoadResult, PluginBuilder } from 'bun'
 import { dts, generate } from '../src/index'
 
 const tempDir = path.resolve(process.cwd(), 'test-temp')

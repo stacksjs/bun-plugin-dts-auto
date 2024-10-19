@@ -12,12 +12,12 @@
     "strict": true,
     "strictNullChecks": true,
     "declaration": true,
-    "isolatedDeclarations": true,
     "declarationMap": true,
     "noEmit": true,
     "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "isolatedDeclarations": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true
   }
