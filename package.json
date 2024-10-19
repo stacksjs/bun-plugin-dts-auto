@@ -1,8 +1,8 @@
 {
-  "name": "bun-plugin-dts-auto",
+  "name": "bun-plugin-dtsx",
   "type": "module",
   "version": "0.20.6",
-  "description": "A Bun Bundler plugin that auto generates your d.ts types.",
+  "description": "A Bun Bundler plugin that auto generates your d.ts types extremely fast.",
   "author": "Chris Breuer <chris@ow3.org>",
   "license": "MIT",
   "homepage": "https://github.com/stacksjs/bun-plugin-dts-auto#readme",
@@ -15,12 +15,13 @@
   },
   "keywords": [
     "dts",
-    "oxc",
+    "dtsx",
     "emit",
     "generation",
     "typescript",
     "types",
     "auto",
+    "stacks",
     "bun",
     "plugin",
     "package"
@@ -36,11 +37,11 @@
   },
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist", "README.md", "LICENSE.md"],
+  "files": ["LICENSE.md", "README.md", "dist"],
   "scripts": {
     "build": "bun build.ts",
-    "lint": "biome check .",
-    "lint:fix": "biome check --fix .",
+    "lint": "bunx eslint .",
+    "lint:fix": "bunx eslint . --fix",
     "fresh": "bunx rimraf node_modules/ bun.lock && bun i",
     "commit": "git cz",
     "changelog": "bunx changelogen --output CHANGELOG.md",
@@ -50,12 +51,11 @@
     "typecheck": "bun tsc --noEmit"
   },
   "dependencies": {
-    "oxc-transform": "^0.30.5"
+    "@stacksjs/dtsx": "^0.2.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.3",
     "@commitlint/cli": "^19.5.0",
-    "@stacksjs/biome-config": "^0.1.5",
+    "@stacksjs/eslint-config": "^3.8.1-beta.2",
     "@types/bun": "^1.1.10",
     "bumpp": "^9.6.1",
     "changelogen": "^0.5.7",
@@ -65,22 +65,12 @@
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.6.2"
   },
-  "optionalDependencies": {
-    "@oxc-transform/binding-win32-x64-msvc": "0.30.5",
-    "@oxc-transform/binding-win32-arm64-msvc": "0.30.5",
-    "@oxc-transform/binding-linux-x64-gnu": "0.30.5",
-    "@oxc-transform/binding-linux-arm64-gnu": "0.30.5",
-    "@oxc-transform/binding-linux-x64-musl": "0.30.5",
-    "@oxc-transform/binding-linux-arm64-musl": "0.30.5",
-    "@oxc-transform/binding-darwin-x64": "0.30.5",
-    "@oxc-transform/binding-darwin-arm64": "0.30.5"
-  },
   "simple-git-hooks": {
     "pre-commit": "bun lint-staged",
     "commit-msg": "bunx --no -- commitlint --edit $1"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,vue}": "biome check --fix ."
+    "*.{js,jsx,ts,tsx}": "bunx eslint . --fix"
   },
   "config": {
     "commitizen": {
