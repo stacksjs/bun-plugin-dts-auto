@@ -1,4 +1,20 @@
 
+## v0.20.6...main
+
+[compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.20.6...main)
+
+### 🚀 Enhancements
+
+- Use `dtsx` ([c12883f](https://github.com/stacksjs/bun-plugin-dts-auto/commit/c12883f))
+
+### 🏡 Chore
+
+- Use eslint ([2f01319](https://github.com/stacksjs/bun-plugin-dts-auto/commit/2f01319))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.20.5...main
 
 [compare changes](https://github.com/stacksjs/bun-plugin-dts-auto/compare/v0.20.5...main)
